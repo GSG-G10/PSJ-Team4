@@ -1,19 +1,19 @@
 
 INSERT INTO users (first_name,last_name,email,password,age,profile_img,cover_img,location,phone_number,status) VALUES
 ('muath', 'alkhtib', 'muthnin9@gmail.com', 'nin2nin2nin', 24,
-'https://static01.nyt.com/images/2016/11/26/world/26London1/26London1-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
+'https://images.pond5.com/close-face-serious-young-arab-footage-139420344_iconl.jpeg',
 'https://thumbs.dreamstime.com/b/white-unhappy-sad-face-icon-made-binary-symbols-over-dark-code-concept-system-error-software-problems-virus-program-209544572.jpg',
 'gaza, hanyonis', '05972654817', 'avaliable');
 
 INSERT INTO users (first_name,last_name,email,password,age,profile_img,cover_img,location,phone_number,status) VALUES
 ('ibrahim', 'jomaa', 'jomaa@gmail.com', 'devluffy', 21,
-'https://www.bioid.com/wp-content/uploads/facerecognition-online-playground-biometrics-bioid.jpg',
+'https://image.shutterstock.com/image-photo/closeup-portrait-confident-middle-eastern-260nw-136789808.jpg',
 'https://miro.medium.com/max/1838/1*MMZW_gj10FYM_5LjllbYUQ.png',
 'gaza, north', '0599759181', 'avaliable');
 
 INSERT INTO users (first_name,last_name,email,password,age,profile_img,cover_img,location,phone_number,status) VALUES
 ('raghd', 'mazen', 'rahd@gmail.com', 'raghd', 30,
-'https://highclouds.org/wp-content/uploads/2019/03/girl-in-red-i-need-to-be-alone.png',
+'https://image.shutterstock.com/image-photo/arabian-woman-face-covered-hijab-260nw-643409845.jpg',
 'https://s.yimg.com/uu/api/res/1.2/ciwD2A5lbBlUPxdXUoHi8Q--~B/Zmk9ZmlsbDtoPTQ1MDt3PTY3NTthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-images/2019-12/0e7b3510-16a2-11ea-bbfe-5fc9911d4886.cf.jpg',
 'gaza, north', '0599759181', 'avaliable');
 
