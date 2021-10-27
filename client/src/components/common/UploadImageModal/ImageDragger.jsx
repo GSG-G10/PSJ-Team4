@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Upload, message } from 'antd';
+import { Upload, message, Image } from 'antd';
 import {
   getStorage,
   ref,
   uploadBytes,
   getDownloadURL,
 } from 'firebase/storage';
-
-import Img from '../Img';
 
 import app from '../../../firebase.config';
 import DragerDescription from './DragerDescription';
@@ -42,7 +40,7 @@ const ImageDragger = () => {
     <>
       <Dragger multiple={false} name="image" customRequest={customUpload}>
         {imageUrl ? (
-          <Img src={imageUrl} alt="image" className="drag-drop-img" />
+          <Image preview={false} src={imageUrl} alt="image" className="drag-drop-img" />
         ) : (
           <DragerDescription />
         )}
