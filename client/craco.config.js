@@ -22,6 +22,8 @@ module.exports = {
               '@primary-color': '#2F66B0',
               '@text-color': '#242424',
               '@text-color-secondary': 'fade(#707070, 85%)',
+              '@icon-color': '#2F66B0',
+              '@icon-color-hover': 'fade(#2F66B0, 75%)',
             },
             javascriptEnabled: true,
           },
