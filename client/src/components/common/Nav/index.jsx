@@ -37,7 +37,7 @@ const menu = (
 const { Search } = Input;
 
 const Nav = () => {
-  const [role, setRole] = useState('user');
+  const [role, setRole] = useState('');
   const onSearch = (value) => {
     // handle search
   };
