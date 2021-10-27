@@ -1,24 +1,24 @@
 import {
   Button, Image, Typography,
-  Form, Input, Checkbox,
+  Form, Input,
 } from 'antd';
 import './style.css';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Logo from './logo.png';
 
-const {
-  Title,
-} = Typography;
+const { Title } = Typography;
 
 function TypeAccount({ typeLogin }) {
-  console.log(typeLogin);
-
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+  };
+
+  const checkLogin = (values) => {
+    axios.post('/login', { value: values, typeLogin })
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   return (
@@ -36,7 +36,7 @@ function TypeAccount({ typeLogin }) {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
-        onFinish={onFinish}
+        onFinish={checkLogin}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         className="form_to_login"
@@ -44,7 +44,7 @@ function TypeAccount({ typeLogin }) {
 
         <Form.Item
           label="Email"
-          name="email"
+          name="Email"
           rules={[
             { required: true, message: 'Please input your username!' },
             { type: 'email' },
@@ -61,11 +61,7 @@ function TypeAccount({ typeLogin }) {
           <Input.Password placeholder="password" />
         </Form.Item>
 
-        <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <Form.Item className="bowl_btn_submit" wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item className="bowl_btn_submit">
           <Button type="primary" className="ant-btn-submit" htmlType="submit">
             Submit
           </Button>
