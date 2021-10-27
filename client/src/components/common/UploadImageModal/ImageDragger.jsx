@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { Upload } from 'antd';
+import { Upload, message } from 'antd';
 import {
-  getStorage, ref, uploadBytes, getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
 } from 'firebase/storage';
 
 import Img from '../Img';
@@ -15,34 +18,34 @@ const { Dragger } = Upload;
 const ImageDragger = () => {
   const [imageUrl, setUrlImage] = useState('');
 
-  const customUpload = ({ onError, onSuccess, file }) => {
+  const customUpload = ({ file }) => {
     const storage = getStorage(app);
-    const metadata = {
-      contentType: 'image/jpeg',
-    };
-    const storageRef = ref(storage, file.name);
-    uploadBytes(storageRef, file, metadata)
-      .then((elm) => getDownloadURL(storageRef, elm.name)
-        .then((url) => setUrlImage(url)));
-
-    try {
-      const image = file.name;
-      onSuccess(null, image);
-    } catch (e) {
-      onError(e);
+    const memiTypes = ['image/jpeg', 'image/png'];
+    if (memiTypes.includes(file.type)) {
+      const storageRef = ref(storage, file.name);
+      uploadBytes(storageRef, file)
+        .then((elm) => getDownloadURL(storageRef, elm.name))
+        .then((url) => setUrlImage(url))
+        .then(() => message.success(
+          `${file.name} 
+        image uploaded successfully click OK
+        to submit your changes.`,
+        ));
+    } else {
+      throw message.error(
+        `${file.name} is not a image file you can use (.jpeg or .png) types`,
+      );
     }
   };
 
   return (
     <>
-      <Dragger name="image" customRequest={customUpload}>
-
+      <Dragger multiple={false} name="image" customRequest={customUpload}>
         {imageUrl ? (
           <Img src={imageUrl} alt="image" className="drag-drop-img" />
         ) : (
           <DragerDescription />
         )}
-        {imageUrl}
       </Dragger>
     </>
   );
