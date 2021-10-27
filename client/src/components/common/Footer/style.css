@@ -1,0 +1,18 @@
+.footer-title{
+    color: white !important;
+    font-weight: bold !important;
+    margin-bottom: .5rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+    letter-spacing: 0.025em !important;
+}
+.footer-content{
+    color: white !important;
+    font-weight: 300 !important;
+    font-size: 0.7rem !important;
+    line-height: 1rem !important;
+}
+.link{
+    color: #38ACED !important;
+    margin-left: 6px;
+}
