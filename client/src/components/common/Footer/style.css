@@ -9,10 +9,14 @@
 .footer-content{
     color: white !important;
     font-weight: 300 !important;
-    font-size: 0.7rem !important;
+    font-size: 0.65rem;
     line-height: 1rem !important;
 }
 .link{
     color: #38ACED !important;
     margin-left: 6px;
+}
+.footer-icon{
+    color: white;
+    font-size: 25px;
 }
