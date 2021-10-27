@@ -13,7 +13,7 @@ import MERCY from './MERCY.png';
 import BANKP from './BANKP.png';
 
 const {
-  Title, Paragraph, Link, Text,
+  Title, Paragraph, Link,
 } = Typography;
 
 function Footer() {
