@@ -1,6 +1,4 @@
-import {
-  Modal,
-} from 'antd';
+import { Modal } from 'antd';
 import '../style.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -8,7 +6,7 @@ import TypeAccount from './TypeAccount';
 import SignupForm from './SignupForm';
 
 function Login({ setIsModalSignup, isModalSignup }) {
-  const [typeUser, setTypeUser] = useState('');
+  const [typeUser, handleTypeUser] = useState('');
   const [isSelectType, setIsSelectType] = useState(false);
 
   const handleOk = () => {
@@ -31,7 +29,7 @@ function Login({ setIsModalSignup, isModalSignup }) {
       >
         { isSelectType
           ? <SignupForm typeUser={typeUser} />
-          : <TypeAccount setTypeUser={setTypeUser} setIsSelectType={setIsSelectType} />}
+          : <TypeAccount handleTypeUser={handleTypeUser} setIsSelectType={setIsSelectType} />}
       </Modal>
     </div>
   );

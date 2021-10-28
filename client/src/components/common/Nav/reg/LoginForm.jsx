@@ -1,17 +1,17 @@
 import {
   Button, Image, Typography,
-  Form, Input,
+  Form, Input, message,
 } from 'antd';
 import '../style.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Logo from '../logo.png';
+import { Logo } from '../../../../assets';
 
 const { Title } = Typography;
 
 function TypeAccount({ typeUser }) {
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = () => {
+    message.warning('This is a warning');
   };
 
   const checkLogin = (values) => {

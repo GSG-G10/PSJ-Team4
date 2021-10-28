@@ -27,7 +27,7 @@ justify-content: space-around;
 }
 
 .form_to_login{
-width: 70% !important;
+width: 70% ;
 margin: 0 auto;
 }
 .form_to_login .ant-row{
@@ -51,11 +51,13 @@ max-width: 100%;
 
 
 .form_to_login .ant-form-item .ant-form-item-label {
-/* line-height: 1.5715; */
-/* white-space: initial; */
-/* background: red !important; */
 text-align: left;
 min-width: 200px !important;
 }
 
 
+
+.form_to_login .ant-form-item{
+
+ margin-bottom: 14px !important;
+}

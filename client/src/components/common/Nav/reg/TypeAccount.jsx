@@ -3,15 +3,15 @@ import {
 } from 'antd';
 import '../style.css';
 import PropTypes from 'prop-types';
-import Logo from '../logo.png';
+import { Logo } from '../../../../assets';
 
 const {
   Title, Paragraph,
 } = Typography;
 
-function TypeAccount({ setTypeUser, setIsSelectType }) {
+function TypeAccount({ handleTypeUser, setIsSelectType }) {
   const handleType = (type) => {
-    setTypeUser(type);
+    handleTypeUser(type);
     setIsSelectType(true);
   };
   return (
@@ -64,7 +64,7 @@ function TypeAccount({ setTypeUser, setIsSelectType }) {
 }
 
 TypeAccount.propTypes = {
-  setTypeUser: PropTypes.func.isRequired,
+  handleTypeUser: PropTypes.func.isRequired,
   setIsSelectType: PropTypes.func.isRequired,
 };
 

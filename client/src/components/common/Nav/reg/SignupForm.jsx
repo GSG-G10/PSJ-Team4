@@ -1,17 +1,17 @@
 import {
-  Button, Image, Typography,
+  Button, Image, Typography, message,
   Form, Input,
 } from 'antd';
 import '../style.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Logo from '../logo.png';
+import { Logo } from '../../../../assets';
 
 const { Title } = Typography;
 
 function TypeAccount({ typeUser }) {
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = () => {
+    message.warning('This is a warning');
   };
 
   const checkLogin = (values) => {
@@ -21,6 +21,25 @@ function TypeAccount({ typeUser }) {
         console.log(res);
       });
   };
+
+  const lineNameInputs = (label, name1, name2, place1, place2) => (
+    <Form.Item label={label}>
+      <Form.Item
+        name={name1}
+        rules={[{ required: true }]}
+        style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+      >
+        <Input placeholder={place1} />
+      </Form.Item>
+      <Form.Item
+        name={name2}
+        rules={[{ required: true }]}
+        style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
+      >
+        <Input placeholder={place2} />
+      </Form.Item>
+    </Form.Item>
+  );
 
   return (
     <div>
@@ -44,42 +63,9 @@ function TypeAccount({ typeUser }) {
       >
         {
         typeUser === 'company'
-          ? (
-            <Form.Item label="Company Name" style={{ marginBottom: 0 }}>
-              <Form.Item
-                name="name"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
-              >
-                <Input placeholder="name" />
-              </Form.Item>
-              <Form.Item
-                name="last_name"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
-              >
-                <Input placeholder="Location" />
-              </Form.Item>
-            </Form.Item>
-          )
-          : (
-            <Form.Item label="Full name" style={{ marginBottom: 0 }}>
-              <Form.Item
-                name="first_name"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
-              >
-                <Input placeholder="First name" />
-              </Form.Item>
-              <Form.Item
-                name="last_name"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
-              >
-                <Input placeholder="Last name" />
-              </Form.Item>
-            </Form.Item>
-          )
+          ? lineNameInputs('Company Name', 'name', 'location', 'Name', 'Location')
+          : lineNameInputs('Full name', 'first_name', 'last_name', 'First name', 'Last name')
+
         }
         <Form.Item
           label="Email"

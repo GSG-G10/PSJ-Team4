@@ -8,7 +8,7 @@ import TypeAccount from './TypeAccount';
 import LoginForm from './LoginForm';
 
 function Login({ setIsModalVisible, isModalVisible }) {
-  const [typeUser, setTypeUser] = useState('');
+  const [typeUser, handleTypeUser] = useState('');
   const [isSelectType, setIsSelectType] = useState(false);
 
   const handleOk = () => {
@@ -31,7 +31,7 @@ function Login({ setIsModalVisible, isModalVisible }) {
       >
         { isSelectType
           ? <LoginForm typeUser={typeUser} />
-          : <TypeAccount setTypeUser={setTypeUser} setIsSelectType={setIsSelectType} />}
+          : <TypeAccount handleTypeUser={handleTypeUser} setIsSelectType={setIsSelectType} />}
       </Modal>
     </div>
   );
