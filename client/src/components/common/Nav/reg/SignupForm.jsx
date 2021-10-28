@@ -16,7 +16,7 @@ function TypeAccount({ typeUser }) {
 
   const checkLogin = (values) => {
     console.log(typeUser);
-    axios.post('/login', { value: values, typeUser })
+    axios.post('/signup', { value: values, typeUser })
       .then((res) => {
         console.log(res);
       });
@@ -45,26 +45,22 @@ function TypeAccount({ typeUser }) {
         {
         typeUser === 'company'
           ? (
-            <>
+            <Form.Item label="Company Name" style={{ marginBottom: 0 }}>
               <Form.Item
-                label="Company Name"
-                name="company_name"
-                rules={[
-                  { required: true, message: 'Please input your username!' },
-                ]}
+                name="name"
+                rules={[{ required: true }]}
+                style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
               >
                 <Input placeholder="name" />
               </Form.Item>
               <Form.Item
-                label="Location"
-                name="location"
-                rules={[
-                  { required: true, message: 'Please input your username!' },
-                ]}
+                name="last_name"
+                rules={[{ required: true }]}
+                style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
               >
                 <Input placeholder="Location" />
               </Form.Item>
-            </>
+            </Form.Item>
           )
           : (
             <Form.Item label="Full name" style={{ marginBottom: 0 }}>
