@@ -43,7 +43,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center mb-2 py-1 px-20 border-b border-gray-200">
+      <nav className="flex justify-between items-center py-1 px-20 border-b border-gray-200">
         <Image
           width="5%"
           alt="PSJobs Logo"
