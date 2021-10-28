@@ -2,20 +2,20 @@ import {
   Button, Image, Typography,
   Form, Input,
 } from 'antd';
-import './style.css';
+import '../style.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Logo from './logo.png';
+import Logo from '../logo.png';
 
 const { Title } = Typography;
 
-function TypeAccount({ typeLogin }) {
+function TypeAccount({ typeUser }) {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
   const checkLogin = (values) => {
-    axios.post('/login', { value: values, typeLogin })
+    axios.post('/login', { value: values, typeUser })
       .then((res) => {
         console.log(res);
       });
@@ -73,7 +73,7 @@ function TypeAccount({ typeLogin }) {
 }
 
 TypeAccount.propTypes = {
-  typeLogin: PropTypes.string.isRequired,
+  typeUser: PropTypes.string.isRequired,
 };
 
 export default TypeAccount;

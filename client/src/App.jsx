@@ -1,6 +1,5 @@
 import 'antd/dist/antd.css';
 import './App.less';
-
 import {
   BrowserRouter as Router,
   Switch,

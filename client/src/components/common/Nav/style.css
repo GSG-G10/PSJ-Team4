@@ -27,8 +27,8 @@ justify-content: space-around;
 }
 
 .form_to_login{
-    width: 70% !important;
-    margin: 0 auto;
+width: 70% !important;
+margin: 0 auto;
 }
 .form_to_login .ant-row{
 display: flex;
@@ -42,7 +42,6 @@ display: block;
 .form_to_login .ant-btn-submit {
 width: 100% !important;
 flex: none !important;
-margin-top: 15px;
 }
 
 .form_to_login .ant-form .ant-form-item .ant-form-item-label, .ant-form .ant-form-item .ant-form-item-control {
@@ -52,7 +51,11 @@ max-width: 100%;
 
 
 .form_to_login .ant-form-item .ant-form-item-label {
-line-height: 1.5715;
-white-space: initial;
+/* line-height: 1.5715; */
+/* white-space: initial; */
+/* background: red !important; */
 text-align: left;
+min-width: 200px !important;
 }
+
+

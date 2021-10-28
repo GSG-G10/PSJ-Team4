@@ -1,17 +1,17 @@
 import {
   Button, Row, Image, Typography,
 } from 'antd';
-import './style.css';
+import '../style.css';
 import PropTypes from 'prop-types';
-import Logo from './logo.png';
+import Logo from '../logo.png';
 
 const {
   Title, Paragraph,
 } = Typography;
 
-function TypeAccount({ setTypeLogin, setIsSelectType }) {
+function TypeAccount({ setTypeUser, setIsSelectType }) {
   const handleType = (type) => {
-    setTypeLogin(type);
+    setTypeUser(type);
     setIsSelectType(true);
   };
   return (
@@ -46,7 +46,7 @@ function TypeAccount({ setTypeLogin, setIsSelectType }) {
         <Button
           key="submit1"
           type="primary"
-          onClick={() => handleType('employee')}
+          onClick={() => handleType('company')}
         >
           As a company
         </Button>
@@ -54,7 +54,7 @@ function TypeAccount({ setTypeLogin, setIsSelectType }) {
         <Button
           key="submit2"
           type="primary"
-          onClick={() => handleType('company')}
+          onClick={() => handleType('employee')}
         >
           As an employee
         </Button>
@@ -64,8 +64,8 @@ function TypeAccount({ setTypeLogin, setIsSelectType }) {
 }
 
 TypeAccount.propTypes = {
-  setTypeLogin: PropTypes.func.isRequired,
-  setIsSelectType: PropTypes.bool.isRequired,
+  setTypeUser: PropTypes.func.isRequired,
+  setIsSelectType: PropTypes.func.isRequired,
 };
 
 export default TypeAccount;
