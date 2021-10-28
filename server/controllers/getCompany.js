@@ -1,4 +1,4 @@
-import getCompanyInfoQuery from '../database/queries';
+const getCompanyInfoQuery = require('../database/queries');
 
 module.exports = async (req, res, next) => {
   const { companyId } = req.params;
