@@ -2,7 +2,10 @@ import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Typography, Rate, Tabs,
+  Typography,
+  Rate,
+  Tabs,
+  message,
   Button,
 } from 'antd';
 import CompanyInfo from '../../components/CompanyInfo';
@@ -23,11 +26,15 @@ const CompanyProfile = () => {
   useEffect(() => {
     const myAbortController = new AbortController();
     async function fetchingLocation(location) {
-      const { data: locationData } = await axios.get(`https://nominatim.openstreetmap.org/search.php?q=${location}&format=jsonv2`, { signal: myAbortController.signal });
-      const { lat } = locationData[0];
-      const { lon } = locationData[0];
-      const map = `https://maps.google.com/maps?q=${lat},${lon}&hl=es&z=14&amp&output=embed`;
-      setMapUrl(map);
+      try {
+        const { data: locationData } = await axios.get(`https://nominatim.openstreetmap.org/search.php?q=${location}&format=jsonv2`, { signal: myAbortController.signal });
+        const { lat } = locationData[0];
+        const { lon } = locationData[0];
+        const map = `https://maps.google.com/maps?q=${lat},${lon}&hl=es&z=14&amp&output=embed`;
+        setMapUrl(map);
+      } catch (err) {
+        message.error('Enternal Server Error');
+      }
     }
     fetchingLocation(companyData.location);
     return () => {
@@ -38,8 +45,12 @@ const CompanyProfile = () => {
   useEffect(() => {
     const myAbortController = new AbortController();
     async function fetchingCompanyData(id) {
-      const data = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
-      setCompanyData(data);
+      try {
+        const data = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
+        setCompanyData(data);
+      } catch (err) {
+        message.error(err.response.data.Error);
+      }
     }
     fetchingCompanyData(companyId);
     return () => {

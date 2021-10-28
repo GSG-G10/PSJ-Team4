@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Typography, Tabs, Image,
+  Typography, Tabs, Image, message,
 } from 'antd';
 import UserInfo from '../../components/EmployeeInfo';
 import Img from '../../components/common/Img';
@@ -20,8 +20,12 @@ const EmployeeProfile = () => {
   useEffect(() => {
     const myAbortController = new AbortController();
     async function fetchingEmployeeData(id) {
-      const data = await axios.get(`/employee/${id}`, { signal: myAbortController.signal });
-      setEmployeeData(data);
+      try {
+        const data = await axios.get(`/employee/${id}`, { signal: myAbortController.signal });
+        setEmployeeData(data);
+      } catch (err) {
+        message.error(err.response.data.Error);
+      }
     }
     fetchingEmployeeData(employeeId);
     return () => {
