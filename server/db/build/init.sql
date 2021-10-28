@@ -6,7 +6,8 @@ CREATE TABLE company (
     email VARCHAR(255) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     location TEXT,
-    profile_img TEXT
+    profile_img TEXT,
+    work_time INT
 )
 
 
