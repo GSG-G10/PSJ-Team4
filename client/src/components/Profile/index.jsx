@@ -41,7 +41,7 @@ const Profile = ({
         <Title level={5}>{page === 'campany' ? `${data.name}` : `${data.firstName} ${data.lastName}`}</Title>
         {page === 'campany' ? (
           <>
-            <Rate allowHalf defaultValue={data.rate} />
+            <Rate disabled allowHalf defaultValue={data.rate} />
             <span className="ml-4">
               {data.rate}
             </span>
