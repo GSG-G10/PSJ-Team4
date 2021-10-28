@@ -30,7 +30,7 @@ function TypeAccount({ typeUser }) {
           width={60}
           src={Logo}
         />
-        <Title level={4}>Log in</Title>
+        <Title level={4}>Sign up</Title>
       </div>
       <Form
         name="basic"
