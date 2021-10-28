@@ -5,8 +5,8 @@ import {
   Descriptions,
 } from 'antd';
 
-const UserInfo = ({ isAuth, data }) => (
-  <Card title="Information" style={{ width: '100%' }} extra={isAuth ? <Button type="primary">Edit</Button> : null}>
+const EmployeeInfo = ({ isAuth, data }) => (
+  <Card title="Information" className="profile-card" extra={isAuth ? <Button type="primary">Edit</Button> : null}>
     <Descriptions>
       <Descriptions.Item label="First Name">{data.firstName}</Descriptions.Item>
       <Descriptions.Item label="Last Name">{data.lastName}</Descriptions.Item>
@@ -18,9 +18,9 @@ const UserInfo = ({ isAuth, data }) => (
     </Descriptions>
   </Card>
 );
-UserInfo.propTypes = {
+EmployeeInfo.propTypes = {
   isAuth: PropTypes.bool.isRequired,
   data: PropTypes.objectOf.isRequired,
 };
 
-export default UserInfo;
+export default EmployeeInfo;
