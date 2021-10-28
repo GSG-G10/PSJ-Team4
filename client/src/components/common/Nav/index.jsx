@@ -7,6 +7,7 @@ import {
   BookOutlined, LogoutOutlined, UserOutlined,
 } from '@ant-design/icons';
 import Logo from './logo.png';
+import Login from './Login';
 
 const handleSignOut = () => {
   // sign out
@@ -36,9 +37,17 @@ const menu = (
 const { Search } = Input;
 
 const Nav = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const [role, setRole] = useState('');
   const onSearch = (value) => {
     // handle search
+    console.log(value);
+    setRole();
+  };
+
+  const showModal = () => {
+    setIsModalVisible(true);
   };
 
   return (
@@ -65,7 +74,16 @@ const Nav = () => {
           )
           : (
             <div>
-              <Button> Login</Button>
+              <Button onClick={showModal}> Login</Button>
+              {
+                  isModalVisible
+                  && (
+                  <Login
+                    setIsModalVisible={setIsModalVisible}
+                    isModalVisible={isModalVisible}
+                  />
+                  )
+              }
               <Button type="primary" className="ml-3">Create Account</Button>
             </div>
           )}
