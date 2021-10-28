@@ -1,3 +1,3 @@
-const getCompanyQuery = require('./getCampany');
+const getCompanyInfoQuery = require('./company/getCompanyInfo');
 
-module.exports = { getCompanyQuery };
+module.exports = { getCompanyInfoQuery };
