@@ -1,4 +1,4 @@
-BEGIN
+BEGIN;
 
 CREATE TABLE company (
     id SERIAL PRIMARY KEY,
