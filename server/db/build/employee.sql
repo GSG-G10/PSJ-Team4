@@ -1,8 +1,9 @@
-BEGIN‏;
-DROP TABLE users IF EXISTS CASCADE‏;
+BEGIN;
 
-CREATE TABLE users (
-id SERIAL Primary key,
+DROP TABLE IF EXISTS employee CASCADE;
+
+CREATE TABLE employee (
+id SERIAL PRIMARY KEY,
 first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
 email VARCHAR(320) UNIQUE NOT NULL,
@@ -16,4 +17,5 @@ status	VARCHAR(50)	DEFAULT 'Available'
 );
 
 SET client_encoding TO 'UTF8';
+
 COMMIT;
