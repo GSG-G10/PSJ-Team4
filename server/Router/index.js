@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
 const { loginValidation } = require('../middlewares');
-const { checkEmployeeAccount, createEmployeeSession } = require('../controllers/Auth/employee');
-const { checkCompanyAccount, createCompanySession } = require('../controllers/Auth/company');
+const { checkEmployeeAccount } = require('../controllers/Auth/employee');
+const { checkCompanyAccount } = require('../controllers/Auth/company');
+const { createSession } = require('../controllers/Auth');
 
-router.post('/e-login', loginValidation, checkEmployeeAccount, createEmployeeSession);
-router.post('/c-login', loginValidation, checkCompanyAccount, createCompanySession);
+router.post('/e-login', loginValidation, checkEmployeeAccount, createSession);
+router.post('/c-login', loginValidation, checkCompanyAccount, createSession);
 
 module.exports = router;
