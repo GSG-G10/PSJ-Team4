@@ -22,7 +22,7 @@ const checkCompanyAccount = async (req, res, next) => {
       res.status(401).json({ message: 'Wrong Email' });
     }
   } catch {
-    res.status(401).json({ message: 'That authorization has been refused' });
+    res.status(500).json({ message: 'That authorization has been refused' });
   }
 };
 
