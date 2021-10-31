@@ -52,7 +52,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="flex justify-between items-center mb-2 py-1 px-20 border-b border-gray-200">
+      <nav className="flex justify-between items-center py-1 px-20 border-b border-gray-200">
         <Image
           width="5%"
           alt="PSJobs Logo"
@@ -64,7 +64,7 @@ const Nav = () => {
         {role
           ? (
             <div className="flex items-center">
-              <Button className="mr-7 text-sm" type="primary">{role === 'user' ? 'EXPLORE' : 'POST A JOB'}</Button>
+              <Button className="mr-7 text-sm" type="primary">{role === 'company' ? 'EXPLORE' : 'POST A JOB'}</Button>
               <Dropdown className="cursor-pointer" overlay={menu} placement="bottomCenter" arrow>
                 <Badge count={5} size="small">
                   <Avatar src={Logo} shape="circle" size="mid" />
