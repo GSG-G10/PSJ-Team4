@@ -1,4 +1,4 @@
-const addEmployeeQuery = require('./addEmployee');
-const getEmployeeByEmail = require('./getEmployeeByEmail');
+const addEmployeeQuery = require('./employee/addEmployee');
+const getEmployeeByEmail = require('./employee/getEmployeeByEmail');
 
 module.exports = { addEmployeeQuery, getEmployeeByEmail };

@@ -2,8 +2,8 @@ const joi = require('joi');
 const { JoiPassword } = require('joi-password');
 
 module.exports = joi.object({
-  firstName: joi.string().require(),
-  lastName: joi.string().require(),
+  firstName: joi.string().required(),
+  lastName: joi.string().required(),
   email: joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'co', 'gov', 'org', 'edu'] } })
     .lowercase()

@@ -13,14 +13,10 @@ module.exports = async (req, res, next) => {
 
     const data = await getEmployeeByEmail(email);
     if (!data.rows[0]) {
-      const hashedPassword = await hash(password);
+      const hashedPassword = await hash(password, 10);
       const userData = await addEmployeeQuery(firstName, lastName, email, hashedPassword);
-      req.body = {
+      req.user = {
         id: userData.rows[0].id,
-        firstName: userData.rows[0].firstName,
-        lastName: userData.rows[0].firstName,
-        Name: userData.rows[0].firstName,
-        profileImage: userData.rows[0].profile_img,
         role: 'employee',
       };
       next();
