@@ -1,4 +1,4 @@
-const getCompanyInfoQuery = require('../database/queries');
+const { getCompanyInfoQuery } = require('../db/queries/company');
 
 module.exports = async (req, res, next) => {
   const { companyId } = req.params;

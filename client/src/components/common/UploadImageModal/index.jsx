@@ -9,7 +9,7 @@ const UploadImageModal = () => {
   return (
     <>
       <EditOutlined
-        style={{ fontSize: '150%' }}
+        style={{ fontSize: '150%', color: '#2F66B0' }}
         onClick={() => setVisible(true)}
       />
       <Modal
