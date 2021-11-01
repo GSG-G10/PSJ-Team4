@@ -12,7 +12,7 @@ CREATE TABLE company (
     start_work_time TEXT,
     end_work_time TEXT,
     location_lat VARCHAR(50),
-    location_lon VARCHAR(50),
+    location_lon VARCHAR(50)
 );
 
 

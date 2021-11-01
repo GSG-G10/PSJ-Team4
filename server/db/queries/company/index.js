@@ -1,3 +1,4 @@
 const checkCompanyEmail = require('./checkCompanyEmail');
+const getCompanyInfoQuery = require('./getCompanyInfo');
 
-module.exports = { checkCompanyEmail };
+module.exports = { checkCompanyEmail, getCompanyInfoQuery };
