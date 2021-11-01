@@ -68,6 +68,7 @@ function Footer() {
           <Row className="mt-4" justify="center">
             <Col span={6} className="mr-1">
               <Image
+                width="40%"
                 alt="Gaza Sky Geeks Logo"
                 src={GSG}
                 preview={false}
