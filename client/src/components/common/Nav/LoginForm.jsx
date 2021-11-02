@@ -1,6 +1,5 @@
 import {
-  Button, Image, Typography,
-  Form, Input,
+  Button, Image, Typography, Form, Input, message,
 } from 'antd';
 import './style.css';
 import axios from 'axios';
@@ -9,26 +8,18 @@ import Logo from './logo.png';
 
 const { Title } = Typography;
 
-function TypeAccount({ typeLogin }) {
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+const typeAccount = ({ typeLogin }) => {
+  const checkLogin = async (values) => {
+    try {
+      await axios.post(`/auth/${typeLogin}`, values);
+    } catch (err) {
+      message.error(err.response.data.message);
+    }
   };
-
-  const checkLogin = (values) => {
-    axios.post('/login', { value: values, typeLogin })
-      .then((res) => {
-        console.log(res);
-      });
-  };
-
   return (
     <div>
       <div className="icon_jsjobs">
-        <Image
-          preview={false}
-          width={60}
-          src={Logo}
-        />
+        <Image preview={false} width={60} src={Logo} />
         <Title level={4}>Log in</Title>
       </div>
       <Form
@@ -37,17 +28,18 @@ function TypeAccount({ typeLogin }) {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={checkLogin}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
         className="form_to_login"
       >
-
         <Form.Item
           label="Email"
-          name="Email"
+          name="email"
           rules={[
-            { required: true, message: 'Please input your username!' },
-            { type: 'email' },
+            {
+              required: true,
+              message: 'Please input your email!',
+              type: 'email',
+            },
           ]}
         >
           <Input placeholder="mail@email.com" />
@@ -67,13 +59,12 @@ function TypeAccount({ typeLogin }) {
           </Button>
         </Form.Item>
       </Form>
-
     </div>
   );
-}
+};
 
-TypeAccount.propTypes = {
+typeAccount.propTypes = {
   typeLogin: PropTypes.string.isRequired,
 };
 
-export default TypeAccount;
+export default typeAccount;
