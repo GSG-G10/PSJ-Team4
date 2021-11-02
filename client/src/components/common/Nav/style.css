@@ -1,0 +1,58 @@
+.pop_login{
+width: 450px !important;
+height: 520px !important;
+}
+
+.icon_jsjobs {
+width: 100% !important;
+text-align: center;
+}
+
+.pop_login .pargraph{
+color: #000 !important;
+display: flex !important;
+width: 100% !important;
+justify-content: space-evenly;
+text-align: center !important;
+margin-top: 70px !important;
+}
+.section_info_log{
+width: 35%;
+}
+
+.footer_btns{
+border-top:none !important;
+display: flex;
+justify-content: space-around;
+}
+
+.form_to_login{
+    width: 70% !important;
+    margin: 0 auto;
+}
+.form_to_login .ant-row{
+display: flex;
+text-align: left;
+}
+
+.form_to_login .ant-form-item-control{
+display: block;
+}
+
+.form_to_login .ant-btn-submit {
+width: 100% !important;
+flex: none !important;
+margin-top: 15px;
+}
+
+.form_to_login .ant-form .ant-form-item .ant-form-item-label, .ant-form .ant-form-item .ant-form-item-control {
+flex: 0 0 100%;
+max-width: 100%;
+}
+
+
+.form_to_login .ant-form-item .ant-form-item-label {
+line-height: 1.5715;
+white-space: initial;
+text-align: left;
+}
