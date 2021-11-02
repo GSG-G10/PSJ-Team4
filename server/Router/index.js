@@ -3,7 +3,7 @@ const { getCompanyInfo } = require('../controllers');
 const { loginValidation } = require('../middlewares');
 const { checkEmployeeAccount } = require('../controllers/Auth/employee');
 const { checkCompanyAccount } = require('../controllers/Auth/company');
-const { createSession } = require('../controllers/Auth');
+const { createSession } = require('../middlewares/createSession');
 
 router.get('/company/:companyId', getCompanyInfo);
 router.post('/auth/employee', loginValidation, checkEmployeeAccount, createSession);
