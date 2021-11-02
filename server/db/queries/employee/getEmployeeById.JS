@@ -1,7 +1,7 @@
 const connection = require('../../config/connection');
 
 
-const getUserById = (userId) =>{
+const getEmployeeById = (userId) =>{
     const sqlQuery = {
         text: "SELECT * FROM users WHERE id = $1",
         values: [userId]
@@ -11,4 +11,4 @@ const getUserById = (userId) =>{
 }
 
 
-module.exports = getUserById;
+module.exports = getEmployeeById;

@@ -1,3 +1,5 @@
 const checkEmployeeEmail = require('./checkEmployeeEmail');
+const getEmployeeById = require('./getEmployeeById.js')
 
-module.exports = { checkEmployeeEmail };
+
+module.exports = { checkEmployeeEmail , getEmployeeById};
