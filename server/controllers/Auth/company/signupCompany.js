@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
     if (!data.rows[0]) {
       const hashedPassword = await hash(password, 10);
       const userData = await addCompany(name, email, hashedPassword, location);
-      req.body = {
+      req.user = {
         id: userData.rows[0].id,
         role: 'company',
       };
