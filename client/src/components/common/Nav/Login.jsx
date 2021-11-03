@@ -21,7 +21,6 @@ function Login({ setIsModalVisible, isModalVisible }) {
 
   return (
     <div className="wrapper_login">
-      {console.log(typeLogin)}
       <Modal
         className="pop_login "
         visible={isModalVisible}
