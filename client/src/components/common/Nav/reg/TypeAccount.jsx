@@ -56,11 +56,7 @@ function TypeAccount({ handleTypeUser, setIsSelectType }) {
 }
 
 TypeAccount.propTypes = {
-<<<<<<< HEAD:client/src/components/common/Nav/TypeAccount.jsx
-  setTypeLogin: PropTypes.func.isRequired,
-=======
   handleTypeUser: PropTypes.func.isRequired,
->>>>>>> fb1a4faefb210aef1a2c6fdc1bf1bf0a1772cac0:client/src/components/common/Nav/reg/TypeAccount.jsx
   setIsSelectType: PropTypes.func.isRequired,
 };
 
