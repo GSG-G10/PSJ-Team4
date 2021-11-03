@@ -1,3 +1,4 @@
+const handleAddEmployee = require('./addEmployee');
 const getCompanyInfo = require('./getCompany');
 
-module.exports = { getCompanyInfo };
+module.exports = { getCompanyInfo, handleAddEmployee };

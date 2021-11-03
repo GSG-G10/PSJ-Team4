@@ -37,8 +37,9 @@ module.exports = async (req, res, next) => {
       status,
       profileImage,
       coverImage);
-    res.status(204).json({ message: 'Your Information updated Successfully' });
+    res.json({ message: 'Your Information updated Successfully' });
   } catch (err) {
+    console.log(err);
     if (err.name === 'ValidationError') {
       res.status(400).json({ Error: err.details[0].message });
     } else {

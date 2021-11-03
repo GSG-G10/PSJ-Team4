@@ -8,10 +8,8 @@ const checkCompanyAccount = async (req, res, next) => {
     if (checkEmailResult.rows[0]) {
       const data = checkEmailResult.rows[0];
       if (await compare(password, data.password)) {
-        req.body = {
+        req.user = {
           id: data.id,
-          name: data.name,
-          profileImage: data.profile_img,
           role: 'company',
         };
         next();
@@ -21,8 +19,8 @@ const checkCompanyAccount = async (req, res, next) => {
     } else {
       res.status(401).json({ message: 'Wrong Email' });
     }
-  } catch {
-    res.status(500).json({ message: 'That authorization has been refused' });
+  } catch (error) {
+    next(error);
   }
 };
 
