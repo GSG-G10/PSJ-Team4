@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { getCompanyInfo } = require('../controllers');
-const { checkEmployeeAccount, handleEditEmployee } = require('../controllers/Auth/employee');
+const { getCompanyInfo, handleEditReview, handleEditEmployee } = require('../controllers');
+const { checkEmployeeAccount } = require('../controllers/Auth/employee');
 const { checkCompanyAccount } = require('../controllers/Auth/company');
 const { handleAddEmployee } = require('../controllers');
 const { checkAuth, createSession, loginValidation } = require('../middlewares');
@@ -10,5 +10,6 @@ router.post('/auth/employee', loginValidation, checkEmployeeAccount, createSessi
 router.post('/auth/company', loginValidation, checkCompanyAccount, createSession);
 router.put('/employee', checkAuth, handleEditEmployee);
 router.post('/employee', handleAddEmployee, createSession);
+router.put('/review/:companyId', checkAuth, handleEditReview);
 
 module.exports = router;
