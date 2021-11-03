@@ -1,5 +1,5 @@
-const { editEmployeeQuery } = require('../../../db/queries/employee');
-const editEmployeeSchema = require('../../../utils/editEmployeeSchema');
+const { editEmployeeQuery } = require('../db/queries/employee');
+const editEmployeeSchema = require('../utils/editEmployeeSchema');
 
 module.exports = async (req, res, next) => {
   try {
@@ -39,7 +39,6 @@ module.exports = async (req, res, next) => {
       coverImage);
     res.json({ message: 'Your Information updated Successfully' });
   } catch (err) {
-    console.log(err);
     if (err.name === 'ValidationError') {
       res.status(400).json({ Error: err.details[0].message });
     } else {
