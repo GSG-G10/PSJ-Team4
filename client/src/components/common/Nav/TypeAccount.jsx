@@ -58,7 +58,7 @@ function TypeAccount({ setTypeLogin, setIsSelectType }) {
 
 TypeAccount.propTypes = {
   setTypeLogin: PropTypes.func.isRequired,
-  setIsSelectType: PropTypes.bool.isRequired,
+  setIsSelectType: PropTypes.func.isRequired,
 };
 
 export default TypeAccount;
