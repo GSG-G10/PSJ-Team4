@@ -1,7 +1,7 @@
 const postReviewQuery = require('./review/postReview');
+const { checkCompanyEmail, getCompanyInfoQuery, addCompany } = require('./company');
 const addEmployeeQuery = require('./employee/addEmployee');
 const getEmployeeByEmail = require('./employee/getEmployeeByEmail');
-const { checkCompanyEmail, getCompanyInfoQuery, addCompany } = require('./company');
 
 module.exports = {
   postReviewQuery,
@@ -9,5 +9,5 @@ module.exports = {
   getEmployeeByEmail,
   checkCompanyEmail,
   getCompanyInfoQuery,
-  addCompany,
+  addCompany, 
 };
