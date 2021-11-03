@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
-  Input, Button, Badge, Avatar,
-  Menu, Dropdown, Image,
+  Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
 import {
   BookOutlined, LogoutOutlined, UserOutlined,
@@ -42,9 +41,8 @@ const Nav = () => {
   const [isModalSignup, setIsModalSignup] = useState(false);
 
   const [role, setRole] = useState('');
-  const onSearch = (value) => {
-    // handle search
-    console.log(value);
+  const onSearch = (/* value */) => {
+    // Handle search here
     setRole();
   };
 
@@ -66,11 +64,24 @@ const Nav = () => {
           preview={false}
           fallback={ImgLoad}
         />
-        <Search placeholder="Search" allowClear onSearch={onSearch} size="mid" style={{ width: '35%' }} />
+        <Search
+          placeholder="Search"
+          allowClear
+          onSearch={onSearch}
+          size="mid"
+          style={{ width: '35%' }}
+        />
         {role ? (
           <div className="flex items-center">
-            <Button className="mr-7 text-sm" type="primary">{role === 'user' ? 'EXPLORE' : 'POST A JOB'}</Button>
-            <Dropdown className="cursor-pointer" overlay={menu} placement="bottomCenter" arrow>
+            <Button className="mr-7 text-sm" type="primary">
+              {role === 'company' ? 'EXPLORE' : 'POST A JOB'}
+            </Button>
+            <Dropdown
+              className="cursor-pointer"
+              overlay={menu}
+              placement="bottomCenter"
+              arrow
+            >
               <Badge count={5} size="small">
                 <Avatar src={Logo} shape="circle" size="mid" />
               </Badge>

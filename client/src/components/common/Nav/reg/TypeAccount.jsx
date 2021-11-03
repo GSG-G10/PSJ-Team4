@@ -5,9 +5,7 @@ import '../style.css';
 import PropTypes from 'prop-types';
 import { Logo } from '../../../../assets';
 
-const {
-  Title, Paragraph,
-} = Typography;
+const { Title, Paragraph } = Typography;
 
 function TypeAccount({ handleTypeUser, setIsSelectType }) {
   const handleType = (type) => {
@@ -17,27 +15,22 @@ function TypeAccount({ handleTypeUser, setIsSelectType }) {
   return (
     <div>
       <div className="icon_jsjobs">
-        <Image
-          preview={false}
-          width={60}
-          src={Logo}
-        />
+        <Image preview={false} width={60} src={Logo} />
         <Title level={4}>Account type</Title>
       </div>
       <Row className="pargraph">
         <div className="section_info_log">
           <Title level={4}>Company</Title>
           <Paragraph>
-            We are the market-leading technical
-            interview platform to identify and hire
-            developers wherever they are.
+            We are the market-leading technical interview platform to identify
+            and hire developers wherever they are.
           </Paragraph>
         </div>
         <div className="section_info_log">
           <Title level={4}>Employee</Title>
           <Paragraph>
-            Join over thousands practice coding skills,
-            prepare for Interviews and get hired.
+            Join over thousands practice coding skills, prepare for Interviews
+            and get hired.
           </Paragraph>
         </div>
       </Row>

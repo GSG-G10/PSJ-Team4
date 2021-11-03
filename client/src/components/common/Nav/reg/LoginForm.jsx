@@ -1,6 +1,5 @@
 import {
-  Button, Image, Typography,
-  Form, Input, message,
+  Button, Image, Typography, Form, Input, message,
 } from 'antd';
 import '../style.css';
 import axios from 'axios';
@@ -9,26 +8,18 @@ import { Logo } from '../../../../assets';
 
 const { Title } = Typography;
 
-function TypeAccount({ typeUser }) {
-  const onFinishFailed = () => {
-    message.warning('This is a warning');
+const typeAccount = ({ typeLogin }) => {
+  const checkLogin = async (values) => {
+    try {
+      await axios.post(`/auth/${typeLogin}`, values);
+    } catch (err) {
+      message.error(err.response.data.message);
+    }
   };
-
-  const checkLogin = (values) => {
-    axios.post('/login', { value: values, typeUser })
-      .then((res) => {
-        console.log(res);
-      });
-  };
-
   return (
     <div>
       <div className="icon_jsjobs">
-        <Image
-          preview={false}
-          width={60}
-          src={Logo}
-        />
+        <Image preview={false} width={60} src={Logo} />
         <Title level={4}>Log in</Title>
       </div>
       <Form
@@ -37,17 +28,18 @@ function TypeAccount({ typeUser }) {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={checkLogin}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
         className="form_to_login"
       >
-
         <Form.Item
           label="Email"
-          name="Email"
+          name="email"
           rules={[
-            { required: true, message: 'Please input your username!' },
-            { type: 'email' },
+            {
+              required: true,
+              message: 'Please input your email!',
+              type: 'email',
+            },
           ]}
         >
           <Input placeholder="mail@email.com" />
@@ -67,13 +59,12 @@ function TypeAccount({ typeUser }) {
           </Button>
         </Form.Item>
       </Form>
-
     </div>
   );
-}
-
-TypeAccount.propTypes = {
-  typeUser: PropTypes.string.isRequired,
 };
 
-export default TypeAccount;
+typeAccount.propTypes = {
+  typeLogin: PropTypes.string.isRequired,
+};
+
+export default typeAccount;
