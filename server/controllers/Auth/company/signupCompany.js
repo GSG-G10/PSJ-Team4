@@ -17,11 +17,9 @@ module.exports = async (req, res, next) => {
       const userData = await addCompany(name, email, hashedPassword, location);
       req.body = {
         id: userData.rows[0].id,
-        name: userData.rows[0].name,
-        location: userData.rows[0].location,
-        profileImage: userData.rows[0].profile_img,
         role: 'company',
       };
+      next();
     } else {
       res.status(409).json({ Error: 'Email is already exists!' });
     }
