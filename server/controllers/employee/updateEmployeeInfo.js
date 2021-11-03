@@ -1,21 +1,33 @@
-const { decode } = require('jsonwebtoken');
-
 const checkEmployeeById = require('./checkEmployeeById');
-const updateEmployeeInfoQuery = require('../../db/queries');
 
-const updateEmployeeInfo = async (req, res, next) => {
-  const { session } = await req.cookies;
-  //   const { id } = req.params;
-  //   const decodedSession = await decode(session);
+const { updateEmployeeInfoQuery } = require('../../db/queries/employee');
+const { emailSchema } = require('../../utils');
 
-  //   if (id === session.id) {
-  //     const checkResult = await checkEmployeeById(id);
-  //     if (checkResult) {
+const updateEmployeeInfo = async (req, res) => {
+  try {
+    const { employeeId } = await req;
+    const {
+      firstName, lastName, email, location, status,
+    } = await req.body;
 
-  //     }
-  //   }
-
-  console.log(decodedSession);
-//   return checkResult ? next() : res.status(404).send('Not Found');
+    const checkId = await checkEmployeeById(employeeId); // Check the ID in database
+    if (checkId) {
+      await emailSchema.validateAsync({ email }); // Validates the email address
+      const response = await updateEmployeeInfoQuery(
+        employeeId,
+        firstName,
+        lastName,
+        email,
+        location,
+        status,
+      );
+      res.json(response.rows[0]);
+    } else {
+      res.status(404);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
+
 module.exports = updateEmployeeInfo;

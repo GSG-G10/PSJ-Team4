@@ -1,3 +1,5 @@
 const emailSchema = require('./emailSchema');
 
-module.exports = { emailSchema };
+const signEmployeeUpSchema = require('./signEmployeeUpSchema');
+
+module.exports = { signEmployeeUpSchema, emailSchema };

@@ -1,6 +1,6 @@
 const connection = require('../../config/connection');
 
-module.exports = (firstName, lastName, email, location, status) => connection.query(
+module.exports = (id, firstName, lastName, email, location, status) => connection.query(
   `
     UPDATE employee SET 
     first_name = $2, 
@@ -9,7 +9,7 @@ module.exports = (firstName, lastName, email, location, status) => connection.qu
     location = $5, 
     status = $6 
     WHERE id = $1
-    RETURNING *
+    RETURNING first_name,last_name,email,location,status
 `,
-  [firstName, lastName, email, location, status],
+  [id, firstName, lastName, email, location, status],
 );
