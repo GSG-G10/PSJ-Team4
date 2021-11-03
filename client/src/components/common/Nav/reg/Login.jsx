@@ -1,14 +1,14 @@
 import {
   Modal,
 } from 'antd';
-import './style.css';
+import '../style.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import TypeAccount from './reg/TypeAccount';
-import LoginForm from './reg/LoginForm';
+import TypeAccount from './TypeAccount';
+import LoginForm from './LoginForm';
 
 function Login({ setIsModalVisible, isModalVisible }) {
-  const [typeLogin, setTypeLogin] = useState('');
+  const [typeUser, handleTypeUser] = useState('');
   const [isSelectType, setIsSelectType] = useState(false);
 
   const handleOk = () => {
@@ -21,6 +21,7 @@ function Login({ setIsModalVisible, isModalVisible }) {
 
   return (
     <div className="wrapper_login">
+      {console.log(typeUser)}
       <Modal
         className="pop_login "
         visible={isModalVisible}
@@ -29,8 +30,8 @@ function Login({ setIsModalVisible, isModalVisible }) {
         footer={false}
       >
         { isSelectType
-          ? <LoginForm typeLogin={typeLogin} />
-          : <TypeAccount setTypeLogin={setTypeLogin} setIsSelectType={setIsSelectType} />}
+          ? <LoginForm typeUser={typeUser} />
+          : <TypeAccount handleTypeUser={handleTypeUser} setIsSelectType={setIsSelectType} />}
       </Modal>
     </div>
   );
