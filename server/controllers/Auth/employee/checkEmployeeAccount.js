@@ -8,11 +8,8 @@ const checkEmployeeAccount = async (req, res, next) => {
     if (checkEmailResult.rows[0]) {
       const data = checkEmailResult.rows[0];
       if (await compare(password, data.password)) {
-        req.body = {
+        req.user = {
           id: data.id,
-          firstName: data.first_name,
-          lastName: data.last_name,
-          profileImage: data.profile_img,
           role: 'employee',
         };
         next();
