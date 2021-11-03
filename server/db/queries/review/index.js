@@ -1,4 +1,5 @@
 const postReviewQuery = require('./postReview');
 const checkReviewByIdQuery = require('./checkReviewById');
+const editReviewQuery = require('./editReview');
 
-module.exports = { postReviewQuery, checkReviewByIdQuery };
+module.exports = { postReviewQuery, editReviewQuery, checkReviewByIdQuery };
