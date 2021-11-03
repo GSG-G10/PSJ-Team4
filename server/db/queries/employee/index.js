@@ -1,8 +1,8 @@
 const checkEmployeeEmail = require('./checkEmployeeEmail');
-const editEmployeeQuery = require('./editEmployee');
+const getEmployeeById = require('./getEmployeeById.js')
 const addEmployee = require('./addEmployee');
 const getEmployeeByEmail = require('./getEmployeeByEmail');
 
-module.exports = {
-  checkEmployeeEmail, editEmployeeQuery, addEmployee, getEmployeeByEmail,
-};
+const editEmployeeQuery = require('./editEmployee');
+
+module.exports = { editEmployeeQuery,checkEmployeeEmail , addEmployee, getEmployeeByEmail, getEmployeeById};
