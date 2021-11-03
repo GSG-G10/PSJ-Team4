@@ -4,8 +4,8 @@ import {
 import './style.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import TypeAccount from './TypeAccount';
-import LoginForm from './LoginForm';
+import TypeAccount from './reg/TypeAccount';
+import LoginForm from './reg/LoginForm';
 
 function Login({ setIsModalVisible, isModalVisible }) {
   const [typeLogin, setTypeLogin] = useState('');

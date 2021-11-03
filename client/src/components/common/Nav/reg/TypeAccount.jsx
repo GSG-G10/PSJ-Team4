@@ -50,7 +50,6 @@ function TypeAccount({ handleTypeUser, setIsSelectType }) {
         >
           As a company
         </Button>
-
         <Button
           key="submit2"
           type="primary"
