@@ -4,6 +4,8 @@ const {
   getCompanyInfo,
   handleEditEmployee,
   handlePostReview,
+  getCompanyReview,
+
 } = require('../controllers');
 const { checkEmployeeAccount } = require('../controllers/Auth/employee');
 const { checkCompanyAccount } = require('../controllers/Auth/company');
@@ -14,6 +16,7 @@ const { checkAuth, createSession, loginValidation } = require('../middlewares');
 
 router.get('/company/:companyId', getCompanyInfo);
 router.get('/employee/:employeeId', getEmployee);
+router.get('/review/:companyId', getCompanyReview);
 
 router.post(
   '/auth/employee',
