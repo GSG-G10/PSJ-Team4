@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node server/index.js",
     "dev": "NODE_ENV=development nodemon server/index.js",
     "dev2": "nodemon server/index.js",
-    "test": "NODE_ENV=test jest ",
+    "test": "NODE_ENV=test jest --watch",
     "client": "cd client && npm start"
   },
   "keywords": [],
