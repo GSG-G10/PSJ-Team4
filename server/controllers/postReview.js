@@ -1,4 +1,7 @@
-const { postReviewQuery, checkReviewByIdQuery } = require('../db/queries/review');
+const {
+  postReviewQuery,
+  checkReviewByIdQuery,
+} = require('../db/queries/review');
 const postReviewSchema = require('../utils/postReviewSchema');
 
 module.exports = async (req, res, next) => {
@@ -7,14 +10,22 @@ module.exports = async (req, res, next) => {
     const { employeeId } = req;
     const { reviewContent, rate, isAnonymous } = req.body;
     await postReviewSchema.validateAsync({
-      reviewContent, rate, isAnonymous,
+      reviewContent,
+      rate,
+      isAnonymous,
     });
     const { rowCount } = await checkReviewByIdQuery(employeeId, companyId);
     if (!rowCount) {
-      await postReviewQuery(companyId, employeeId, reviewContent, rate, isAnonymous);
+      await postReviewQuery(
+        companyId,
+        employeeId,
+        reviewContent,
+        rate,
+        isAnonymous,
+      );
       res.json({ message: 'Review Added Successfully' });
     } else {
-      res.status(405).json({ Error: 'You can\'t add more than one review' });
+      res.status(405).json({ Error: "You can't add more than one review" });
     }
   } catch (error) {
     if (error.name === 'ValidationError') {

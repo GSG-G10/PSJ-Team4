@@ -7,5 +7,3 @@ module.exports = (name, email, password, location) => {
   };
   return connection.query(sqlQuery);
 };
-
-

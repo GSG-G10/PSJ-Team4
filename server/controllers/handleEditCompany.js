@@ -4,12 +4,7 @@ const editCompanySchema = require('../utils/editCompanySchema');
 module.exports = async (req, res, next) => {
   try {
     const {
-      name,
-      email,
-      profileImage,
-      location,
-      startWorkTime,
-      endWorkTime,
+      name, email, profileImage, location, startWorkTime, endWorkTime,
     } = req.body;
     const { companyId } = req;
 
@@ -22,13 +17,15 @@ module.exports = async (req, res, next) => {
       endWorkTime,
     });
 
-    await editCompanyQuery(companyId,
+    await editCompanyQuery(
+      companyId,
       name,
       email,
       location,
       profileImage,
       startWorkTime,
-      endWorkTime);
+      endWorkTime,
+    );
     res.json({ message: 'Your Information updated Successfully' });
   } catch (err) {
     if (err.name === 'ValidationError') {
