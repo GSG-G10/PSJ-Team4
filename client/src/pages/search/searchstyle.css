@@ -1,0 +1,102 @@
+
+.wrapper_search{
+width: 80%;
+margin: 0 auto;
+}
+
+.form_fitler_Search{
+/* background-color: aqua; */
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+height: 60px;
+width: 80%;
+margin: 0 auto;
+}
+
+
+.input_query{
+border: 1px solid rgb(207, 207, 207);
+border-radius: 4px;
+padding: 3px 12px;
+display: flex;
+align-items: center;
+}
+
+.input_query input{
+outline: none;
+}
+
+
+
+.bowl_loaction input{
+border: 1px solid rgb(207, 207, 207);
+border-radius: 4px;
+padding: 3px 12px;
+outline: none;
+}
+
+
+.bowl_input select:hover,
+.bowl_input_company:hover,
+.bowl_loaction input:hover,
+.input_query:hover{
+border: 1px solid #2F66B0;
+}
+
+
+
+.bowl_input select{
+border: 1px solid rgb(207, 207, 207);
+border-radius: 4px;
+padding: 4px 5px;
+outline: none;
+color: rgb(151, 151, 151);
+}
+
+
+
+
+.bowl_input button{
+background-color: #2F66B0;
+color: #fff;
+padding: 4px 17px;
+border-radius: 3px;
+}
+
+
+
+.bowl_input button:active{
+transform: scale(0.985);
+}
+
+
+
+.wrapper_cads_companyes{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+
+
+.bowl_pagination{
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.bowl_input_company{
+border: 1px solid rgb(207, 207, 207);
+border-radius: 4px;
+width: 100px;
+padding: 3px 8px;
+outline: none;
+}
+
+
+.bowl_input_company input{
+    width: 100%;
+    outline: none;
+}

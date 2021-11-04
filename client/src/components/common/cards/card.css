@@ -1,0 +1,120 @@
+
+
+.card_company{
+background-color: #fff;
+box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+border-radius: 5px;
+width: 250px;
+height:270px;
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+justify-content: space-evenly;
+margin: 15px;
+padding: 15px;
+color: #000;
+}
+
+
+.name_copany{
+font-size: 1.2rem;
+font-weight: 600;
+
+}
+.logo_company{
+text-align: center;
+}
+
+
+.time_open,
+.location_company{
+font-size: 0.9rem;
+display: flex;
+align-items: center;
+margin-top: 3px;
+}
+
+.time_open svg,
+.location_company svg{
+width: 20px;
+height: 20px;
+fill: rgb(145, 145, 145);
+margin-right: 5px;
+}
+
+
+
+
+
+/* card_job */
+
+.card_job{
+background-color: #fff;
+box-shadow: 0 1px 7px rgba(0, 0, 0, 0.15);
+border-radius: 5px;
+width: 250px;
+height:290px;
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+justify-content: space-evenly;
+margin: 15px;
+padding:5px 15px;
+color: #000;
+position: relative;
+
+}
+.card_job:hover{
+box-shadow: 0 1px 7px rgba(0, 0, 0, 0.25);
+}
+
+
+.title_job{
+font-size: 1.3rem;
+}
+
+
+.name_copany_jobs{
+font-size: 0.9rem;
+}
+
+
+.prive_job{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+
+
+.skills{
+    font-size: .7rem;
+}
+
+
+.info_more{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.btn_more{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.btn_more:hover{
+    background-color: rgb(218, 217, 216);
+}
+
+.btn_more svg{
+    width: 25px;
+    height: 25px;
+    fill: rgb(59, 59, 59);
+}
