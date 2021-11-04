@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import CompanyInfo from '../../components/CompanyInfo';
 import Img from '../../components/common/Img';
-import authContext from '../../context/authContext';
+// import authContext from '../../context/authContext';
 import './style.css';
 
 const { Title } = Typography;
@@ -20,7 +20,7 @@ const CompanyProfile = () => {
   const [mapUrl, setMapUrl] = useState('');
   const [companyData, setCompanyData] = useState({});
 
-  const { isAuth } = useContext(authContext);
+  // const { isAuth } = useContext(authContext);
   const { companyId } = useParams();
 
   useEffect(() => {

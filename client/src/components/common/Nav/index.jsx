@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
 import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import Logo from './logo.png';
 import Login from './Login';
+import { UserData } from '../../../context/UserDataContext';
+
+const { Search } = Input;
 
 const handleSignOut = () => {
   // sign out
@@ -31,15 +34,12 @@ const menu = (
   </Menu>
 );
 
-const { Search } = Input;
-
 const Nav = () => {
+  const userData = useContext(UserData);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const [role, setRole] = useState('');
-  const onSearch = (/* value */) => {
+  const onSearch = (value) => {
     // Handle search here
-    setRole();
   };
 
   const showModal = () => {
@@ -63,10 +63,11 @@ const Nav = () => {
           size="mid"
           style={{ width: '35%' }}
         />
-        {role ? (
+        {userData.role ? (
           <div className="flex items-center">
             <Button className="mr-7 text-sm" type="primary">
-              {role === 'company' ? 'EXPLORE' : 'POST A JOB'}
+              {userData.role
+               === 'company' ? 'EXPLORE' : 'POST A JOB'}
             </Button>
             <Dropdown
               className="cursor-pointer"
@@ -75,7 +76,7 @@ const Nav = () => {
               arrow
             >
               <Badge count={5} size="small">
-                <Avatar src={Logo} shape="circle" size="mid" />
+                <Avatar src={userData.profile_img} shape="circle" size="mid" />
               </Badge>
             </Dropdown>
           </div>

@@ -7,7 +7,8 @@ import Nav from './components/common/Nav';
 import { CompanyProfile, EmployeeProfile } from './pages';
 
 // Context
-import { UserData } from './context';
+import UserDataProvider from './context/UserDataContext';
+
 // Styles
 import 'antd/dist/antd.css';
 import './App.less';
@@ -15,11 +16,14 @@ import './index.css';
 
 function App() {
   return (
-    <UserData.Provider>
+    <UserDataProvider>
       <Router>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/">
+            <Nav />
+
+          </Route>
           <Route exact path="/search/:category" />
           <Route exact path="/campany/:companyId">
             <CompanyProfile />
@@ -31,7 +35,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </UserData.Provider>
+    </UserDataProvider>
   );
 }
 

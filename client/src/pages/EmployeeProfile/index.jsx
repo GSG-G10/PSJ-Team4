@@ -6,7 +6,7 @@ import {
 } from 'antd';
 import UserInfo from '../../components/EmployeeInfo';
 import Img from '../../components/common/Img';
-import authContext from '../../context/authContext';
+// import authContext from '../../context/authContext';
 
 const { Title } = Typography;
 const { TabPane } = Tabs;
@@ -14,7 +14,7 @@ const { TabPane } = Tabs;
 const EmployeeProfile = () => {
   const [employeeData, setEmployeeData] = useState({});
 
-  const { isAuth } = useContext(authContext);
+  // const { isAuth } = useContext(authContext);
   const { employeeId } = useParams();
 
   useEffect(() => {

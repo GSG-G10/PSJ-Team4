@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
       email, password, firstName, lastName, confirmPassword,
     } = req.body;
     await signEmployeeUpSchema.validateAsync({
-      email, password, firstName, lastName, confirmPassword,
+      firstName, lastName, email, password, confirmPassword,
     });
 
     const data = await getEmployeeByEmail(email);
