@@ -10,4 +10,4 @@ const getEmployee = async (req, res, next) => {
   }
 };
 
-module.exports = {getEmployee}
+module.exports = { getEmployee };

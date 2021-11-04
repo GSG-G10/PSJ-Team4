@@ -8,13 +8,22 @@ module.exports = async (req, res, next) => {
       email, password, firstName, lastName, confirmPassword,
     } = req.body;
     await signEmployeeUpSchema.validateAsync({
-      email, password, firstName, lastName, confirmPassword,
+      email,
+      password,
+      firstName,
+      lastName,
+      confirmPassword,
     });
 
     const data = await getEmployeeByEmail(email);
     if (!data.rows[0]) {
       const hashedPassword = await hash(password, 10);
-      const userData = await addEmployeeQuery(firstName, lastName, email, hashedPassword);
+      const userData = await addEmployeeQuery(
+        firstName,
+        lastName,
+        email,
+        hashedPassword,
+      );
       req.user = {
         id: userData.rows[0].id,
         role: 'employee',

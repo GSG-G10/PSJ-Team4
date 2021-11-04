@@ -9,5 +9,5 @@ module.exports = {
   getEmployeeByEmail,
   checkCompanyEmail,
   getCompanyInfoQuery,
-  addCompany, 
+  addCompany,
 };
