@@ -12,6 +12,7 @@ import { UserData } from './context';
 import 'antd/dist/antd.css';
 import './App.less';
 import './index.css';
+import Search from './pages/search/Search';
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" />
-          <Route exact path="/search/:category" />
-          <Route exact path="/company/:companyId">
+    
+          <Route exact path="/search/:category" component={Search} />
+
+         <Route exact path="/company/:companyId">
             <CompanyProfile />
           </Route>
           <Route exact path="/employee/:employeeId">
