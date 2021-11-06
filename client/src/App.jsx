@@ -21,6 +21,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" />
+
           <Route exact path="/search/:category" component={Search} />
 
           <Route exact path="/company/:companyId">
