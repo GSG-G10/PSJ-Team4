@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/" />
           <Route exact path="/search/:category" />
-          <Route exact path="/campany/:companyId">
+          <Route exact path="/company/:companyId">
             <CompanyProfile />
           </Route>
           <Route exact path="/employee/:employeeId">
