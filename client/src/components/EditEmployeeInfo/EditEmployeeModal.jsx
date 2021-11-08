@@ -1,38 +1,35 @@
-import { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import axios from 'axios';
 import { Modal, Button, message } from 'antd';
 
 import EditEmployeeForm from './EditEmployeeForm';
 
-import { UserData } from '../../context';
-
-const EditEmployeeModal = () => {
+const EditEmployeeModal = ({ data }) => {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-
-  const { id } = useContext(UserData);
 
   const EditEmployeeInfoModal = () => {
     setVisible(true);
   };
+
   const messageSuccess = (value) => message.success(value);
   const messageError = (value) => message.error(value);
 
-  const sendRequest = async (userId, data) => {
-    try {
-      const {response} = await axios.put(`/employee/${userId}`, data);
-      messageSuccess(response.data);
-    } catch (error) {
-      messageError(error.message);
-    }
-  };
-
-  const handleOk = (data) => {
+  const handleOk = (formData) => {
     setConfirmLoading(true);
     setTimeout(() => {
       setVisible(false);
       setConfirmLoading(false);
-      sendRequest(id, data);
+      const sendRequest = async (newInformation) => {
+        try {
+          const response = await axios.put(`/employee/${data.id}`, newInformation);
+          messageSuccess(response.data.message);
+        } catch (error) {
+          messageError(error.message);
+        }
+      };
+      sendRequest(formData);
     }, 2000);
   };
 
@@ -55,5 +52,8 @@ const EditEmployeeModal = () => {
       </Modal>
     </>
   );
+};
+EditEmployeeModal.propTypes = {
+  data: PropTypes.isRequired,
 };
 export default EditEmployeeModal;

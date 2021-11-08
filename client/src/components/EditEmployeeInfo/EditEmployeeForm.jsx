@@ -193,7 +193,7 @@ const EditEmployeeForm = ({ handleOk }) => {
       name="register"
       onFinish={onFinish}
       initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
+        residence: ['Palestine'],
         prefix: '+970',
       }}
       scrollToFirstError

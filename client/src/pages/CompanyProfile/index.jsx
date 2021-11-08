@@ -3,12 +3,17 @@ import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {
-  Typography, Rate, Tabs, message, Button,
+  Typography,
+  Rate,
+  Tabs,
+  message,
+  Button,
+  Empty,
 } from 'antd';
+import { UserData } from '../../context/UserDataContext';
 import CompanyInfo from '../../components/CompanyInfo';
 import Img from '../../components/common/Img';
 import CompanyReviews from '../../components/CompanyReview';
-import authContext from '../../context/authContext';
 import './style.css';
 
 const { Title } = Typography;
@@ -17,10 +22,19 @@ const { TabPane } = Tabs;
 const CompanyProfile = () => {
   const [mapUrl, setMapUrl] = useState('');
   const [companyData, setCompanyData] = useState({});
+  const [isAuth, setIsAuth] = useState(false);
+  const userData = useContext(UserData);
   const [reviews, setReviews] = useState({});
 
-  const { isAuth } = true; // useContext(authContext);
   const { companyId } = useParams();
+
+  useEffect(() => {
+    if (userData.data) {
+      setIsAuth(companyId == userData.data.id && userData.role === 'company');
+    } else {
+      setIsAuth(false);
+    }
+  }, [userData]);
 
   useEffect(() => {
     const myAbortController = new AbortController();
@@ -38,7 +52,9 @@ const CompanyProfile = () => {
         message.error('Enternal Server Error');
       }
     }
-    fetchingLocation(companyData.location);
+    if (companyData?.data?.location) {
+      fetchingLocation(companyData?.data?.location);
+    }
     return () => {
       myAbortController.abort();
     };
@@ -48,12 +64,12 @@ const CompanyProfile = () => {
     const myAbortController = new AbortController();
     async function fetchingCompanyData(id) {
       try {
-        const response = await axios.get(`/company/${id}`, {
-          signal: myAbortController.signal,
-        });
-        const getReviews = await axios.get(`/review/${id}`, { signal: myAbortController.signal });
-        setReviews(getReviews.data);
-        setCompanyData(response.data);
+        if (!isAuth) {
+          const { data } = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
+          setCompanyData(data);
+        } else {
+          setCompanyData(userData.data);
+        }
       } catch (err) {
         message.error(err.response.data.Error);
       }
@@ -64,9 +80,25 @@ const CompanyProfile = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const myAbortController = new AbortController();
+    async function fetchingCompanyReviews(id) {
+      try {
+        const getReviews = await axios.get(`/review/${id}`, { signal: myAbortController.signal });
+        setReviews(getReviews.data);
+      } catch (err) {
+        message.error(err.response.data.Error);
+      }
+    }
+    fetchingCompanyReviews(companyId);
+    return () => {
+      myAbortController.abort();
+    };
+  }, []);
+
   return (
     <>
-      {mapUrl && companyData.profile_img ? (
+      {companyData?.data ? (
         <>
           <iframe
             src={mapUrl}
@@ -80,35 +112,24 @@ const CompanyProfile = () => {
           />
           <div className="flex mx-20 text-gray-400 justify-between">
             <div className="profile -mt-16">
-              <Img
-                className="profile-img"
-                alt="profile image"
-                src={companyData.profile_img}
-              />
-              <Title level={5}>{companyData.name}</Title>
-              <Rate disabled allowHalf defaultValue={companyData.rate} />
-              <span className="ml-4">{companyData.rate}</span>
-              {isAuth ? (
-                <Button className="self-center" type="primary">
-                  POST a Job
-                </Button>
-              ) : null}
+              <Img className="profile-img" alt="profile image" src={companyData.data.profile_img} />
+              <Title level={5}>{companyData.data.name}</Title>
+              <Rate disabled allowHalf defaultValue={3.5} />
+              <span className="ml-4">{3.5}</span>
+              {isAuth ? <Button className="self-center" type="primary">POST a Job</Button> : null}
             </div>
           </div>
-          <section className="profile-tabs">
-            <Tabs tabPosition="left">
-              <TabPane tab="Information" key="1">
-                <CompanyInfo isAuth={isAuth} data={companyData} />
-              </TabPane>
-              <TabPane tab="Jobs" key="2" />
-              <TabPane tab="Review" key="3">
-                <CompanyReviews reviews={reviews} />
-              </TabPane>
-            </Tabs>
-          </section>
-
+          <Tabs tabPosition="left" className="profile-tabs">
+            <TabPane tab="Information" key="1">
+              <CompanyInfo isAuth={isAuth} data={companyData.data} />
+            </TabPane>
+            <TabPane tab="Jobs" key="2" />
+            <TabPane tab="Review" key="3">
+              <CompanyReviews reviews={reviews} />
+            </TabPane>
+          </Tabs>
         </>
-      ) : null}
+      ) : <Empty className="empty" />}
     </>
   );
 };
