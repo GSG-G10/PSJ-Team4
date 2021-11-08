@@ -17,7 +17,7 @@ export const timeSince = (timeStamp) => {
   const now = new Date();
   const secondsPast = (now.getTime() - timeStamp.getTime()) / 1000;
 
-  const formatDate = function (date, format, utc) {
+  const formatDate = (date, format, utc) => {
     const MMMM = ['\x00', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const MMM = ['\x01', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const dddd = ['\x02', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

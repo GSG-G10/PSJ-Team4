@@ -9,7 +9,7 @@
     "dev2": "nodemon server/index.js",
     "test": "NODE_ENV=test jest --watch",
     "client": "cd client && npm start",
-    "heroku-postbuild": "cd ./client && rm -rf build && npm install && npm run build --prod"
+    "heroku-postbuild": "cd ./server && rm -rf build && cd ../ && cd ./client && rm -rf build && npm install && npm run build --prod && cp -r build ../server"
   },
   "keywords": [],
   "author": "",
