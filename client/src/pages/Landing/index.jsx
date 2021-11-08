@@ -1,48 +1,79 @@
-import { useEffect, useState } from 'react';
-import { Typography, Card, Button } from 'antd';
+import { useContext, useEffect, useState } from 'react';
+import {
+  Typography, Card, Button, Image,
+} from 'antd';
 import { AimOutlined, BankOutlined, SearchOutlined } from '@ant-design/icons';
 import './style.css';
-import Paragraph from 'antd/lib/skeleton/Paragraph';
 import mercy from '../../assets/mercy.jpg';
 import paltel from '../../assets/paltel.jpg';
 import bank from '../../assets/bank.jpg';
 import gsg from '../../assets/gsg.jpg';
 import { UserData } from '../../context/UserDataContext';
 import landingCompany from '../../assets/landingCompany.png';
-import landingEmployee from '../../assets/landingCompany.png';
-import landingUser from '../../assets/landingCompany.png';
+import landingEmployee from '../../assets/landingEmployee.png';
+import landingUser from '../../assets/landingUser.png';
 
 const { Meta } = Card;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Landing = () => {
-  const [role, setRole] = useState('');
+  const [role, setrole] = useState('');
+
+  const userData = useContext(UserData);
 
   useEffect(() => {
-    setRole(UserData.role);
-  }, [UserData]);
+    setrole(userData.role);
+  }, [userData]);
 
   return (
     <>
-      <div>
-        <div>
-          <Title>Find jobs on PSJobs</Title>
-          <Paragraph>
-            The largest job search engine.
-            In a single search,
-            PSJobs provides free access to thousnds of jobs
-            from thousands of corporate and job sites in palestine.
-          </Paragraph>
-          {UserData.role === 'company' || UserData.role === 'employee' ? <Button>{UserData.role === 'company' ? 'Post a Job' : 'Explore'}</Button> : (
+      {role === 'company' || role === 'employee' ? (
+        <div className="header">
+          <div className="text-container">
+            <Title>
+              Find jobs on
+              <br />
+              <span className="psjob">
+                PSJobs
+              </span>
+            </Title>
+            <Text className="text">
+              The largest job search engine.
+              In a single search,
+              PSJobs provides free access to thousnds of jobs
+              from thousands of corporate and job sites in palestine.
+            </Text>
             <div>
-              <Button>Log in</Button>
-              <Button>Create an account</Button>
+              <Button size="mid" type="primary">{role === 'company' ? 'Post a Job' : 'Explore'}</Button>
             </div>
-          )}
-
+          </div>
+          <Image preview={false} src={role === 'company' ? landingCompany : landingEmployee} />
         </div>
-        <Image src={role === 'company' ? landingCompany : (role === 'employee' ? landingEmployee : landingUser)} />
-      </div>
+      ) : (
+        <div className="header">
+          <div className="text-container">
+            <Title>
+              Find jobs on
+              <br />
+              <span className="psjob">
+                PSJobs
+              </span>
+            </Title>
+            <Text className="text">
+              The largest job search engine.
+              In a single search,
+              PSJobs provides free access to thousnds of jobs
+              from thousands of corporate and job sites in palestine.
+            </Text>
+            <div className="flex">
+              <Button size="mid" type="primary">Log in</Button>
+              <Button size="mid" className="mx-5">Create an account</Button>
+            </div>
+          </div>
+          <Image preview={false} src={landingUser} />
+        </div>
+      )}
+
       <div className="sevices bg-primary py-8">
         <Title level={3} className="text-center">OUR SERVICES</Title>
         <div className="flex justify-around w-8/12 mx-auto mt-8 mb-6">

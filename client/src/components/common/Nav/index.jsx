@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
@@ -17,9 +17,15 @@ const handleSignOut = () => {
 };
 
 const Nav = () => {
-  const userData = useContext(UserData);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalSignup, setIsModalSignup] = useState(false);
+  const [role, setrole] = useState('');
+
+  const userData = useContext(UserData);
+
+  useEffect(() => {
+    setrole(userData.role);
+  }, [userData]);
 
   const onSearch = (value) => {
     // Handle search here
@@ -50,7 +56,7 @@ const Nav = () => {
           size="mid"
           style={{ width: '35%' }}
         />
-        {userData.role ? (
+        {role === 'company' || role === 'employee' ? (
           <div className="flex items-center">
             {userData.role === 'company' ? (
               <Button className="mr-7 text-sm" type="primary">POST A JOB</Button>
