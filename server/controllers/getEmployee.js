@@ -4,10 +4,10 @@ const getEmployee = async (req, res, next) => {
   const { employeeId } = req.params;
   try {
     const { rows: data } = await getEmployeeById(employeeId);
-    res.json({ data });
+    res.json({ data: data[0] });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports = {getEmployee}
+module.exports = { getEmployee };

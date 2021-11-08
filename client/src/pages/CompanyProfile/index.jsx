@@ -7,10 +7,11 @@ import {
   Tabs,
   message,
   Button,
+  Empty,
 } from 'antd';
 import CompanyInfo from '../../components/CompanyInfo';
 import Img from '../../components/common/Img';
-// import authContext from '../../context/authContext';
+import { UserData } from '../../context/UserDataContext';
 import './style.css';
 
 const { Title } = Typography;
@@ -19,9 +20,18 @@ const { TabPane } = Tabs;
 const CompanyProfile = () => {
   const [mapUrl, setMapUrl] = useState('');
   const [companyData, setCompanyData] = useState({});
+  const [isAuth, setIsAuth] = useState(false);
 
-  // const { isAuth } = useContext(authContext);
+  const userData = useContext(UserData);
   const { companyId } = useParams();
+
+  useEffect(() => {
+    if (userData.data) {
+      setIsAuth(companyId == userData.data.id && userData.role === 'company');
+    } else {
+      setIsAuth(false);
+    }
+  }, [userData]);
 
   useEffect(() => {
     const myAbortController = new AbortController();
@@ -36,7 +46,9 @@ const CompanyProfile = () => {
         message.error('Enternal Server Error');
       }
     }
-    fetchingLocation(companyData.location);
+    if (companyData?.data?.location) {
+      fetchingLocation(companyData?.data?.location);
+    }
     return () => {
       myAbortController.abort();
     };
@@ -46,8 +58,12 @@ const CompanyProfile = () => {
     const myAbortController = new AbortController();
     async function fetchingCompanyData(id) {
       try {
-        const data = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
-        setCompanyData(data);
+        if (!isAuth) {
+          const { data } = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
+          setCompanyData(data);
+        } else {
+          setCompanyData(userData.data);
+        }
       } catch (err) {
         message.error(err.response.data.Error);
       }
@@ -60,7 +76,7 @@ const CompanyProfile = () => {
 
   return (
     <>
-      {mapUrl && companyData.profileImage ? (
+      {companyData?.data ? (
         <>
           <iframe
             src={mapUrl}
@@ -74,22 +90,22 @@ const CompanyProfile = () => {
           />
           <div className="flex mx-20 text-gray-400 justify-between">
             <div className="profile -mt-16">
-              <Img className="profile-img" alt="profile image" src={companyData.profileImage} />
-              <Title level={5}>{companyData.name}</Title>
-              <Rate disabled allowHalf defaultValue={companyData.rate} />
-              <span className="ml-4">{companyData.rate}</span>
+              <Img className="profile-img" alt="profile image" src={companyData.data.profile_img} />
+              <Title level={5}>{companyData.data.name}</Title>
+              <Rate disabled allowHalf defaultValue={3.5} />
+              <span className="ml-4">{3.5}</span>
               {isAuth ? <Button className="self-center" type="primary">POST a Job</Button> : null}
             </div>
           </div>
           <Tabs tabPosition="left" className="profile-tabs">
             <TabPane tab="Information" key="1">
-              <CompanyInfo isAuth={isAuth} data={companyData} />
+              <CompanyInfo isAuth={isAuth} data={companyData.data} />
             </TabPane>
             <TabPane tab="Jobs" key="2" />
             <TabPane tab="Review" key="3" />
           </Tabs>
         </>
-      ) : null}
+      ) : <Empty className="empty" />}
     </>
   );
 };

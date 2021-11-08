@@ -13,19 +13,18 @@ import UserDataProvider from './context/UserDataContext';
 import 'antd/dist/antd.css';
 import './App.less';
 import './index.css';
+import Search from './pages/search/Search';
 
 function App() {
   return (
     <UserDataProvider>
       <Router>
-        {/* <Nav /> */}
+        <Nav />
         <Switch>
-          <Route exact path="/">
-            <Nav />
+          <Route exact path="/" />
+          <Route exact path="/search/:category" component={Search} />
 
-          </Route>
-          <Route exact path="/search/:category" />
-          <Route exact path="/campany/:companyId">
+          <Route exact path="/company/:companyId">
             <CompanyProfile />
           </Route>
           <Route exact path="/employee/:employeeId">

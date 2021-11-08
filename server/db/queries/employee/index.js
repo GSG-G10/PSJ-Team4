@@ -6,5 +6,9 @@ const getEmployeeByEmail = require('./getEmployeeByEmail');
 const editEmployeeQuery = require('./editEmployee');
 
 module.exports = {
-  editEmployeeQuery, checkEmployeeEmail, addEmployee, getEmployeeByEmail, getEmployeeById,
+  editEmployeeQuery,
+  checkEmployeeEmail,
+  addEmployee,
+  getEmployeeByEmail,
+  getEmployeeById,
 };

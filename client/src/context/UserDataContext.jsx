@@ -21,7 +21,7 @@ const UserDataProvider = ({ children }) => {
     }
     setUserInfo({
       role: sessionDecoded.role,
-      data: res.data.data[0],
+      data: res.data.data,
     });
   };
 

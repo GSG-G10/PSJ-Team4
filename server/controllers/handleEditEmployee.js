@@ -27,7 +27,8 @@ module.exports = async (req, res, next) => {
       profileImage,
       coverImage,
     });
-    await editEmployeeQuery(employeeId,
+    await editEmployeeQuery(
+      employeeId,
       firstName,
       lastName,
       email,
@@ -36,7 +37,8 @@ module.exports = async (req, res, next) => {
       birthDate,
       status,
       profileImage,
-      coverImage);
+      coverImage,
+    );
     res.json({ message: 'Your Information updated Successfully' });
   } catch (err) {
     if (err.name === 'ValidationError') {
