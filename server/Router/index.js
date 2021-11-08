@@ -32,6 +32,9 @@ router.post(
 );
 router.post('/review/:companyId', checkAuth, handlePostReview);
 router.put('/employee', checkAuth, handleEditEmployee);
+router.put('/employee/:id', (req, res) => {
+  res.send('Information has changed');
+});
 router.post('/employee', handleAddEmployee, createSession);
 
 module.exports = router;

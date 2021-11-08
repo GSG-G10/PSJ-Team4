@@ -8,7 +8,7 @@ import TypeAccount from './reg/TypeAccount';
 import LoginForm from './reg/LoginForm';
 
 function Login({ setIsModalVisible, isModalVisible }) {
-  const [typeLogin, setTypeLogin] = useState('');
+  const [typeUser, setTypeUser] = useState('');
   const [isSelectType, setIsSelectType] = useState(false);
 
   const handleOk = () => {
@@ -18,7 +18,7 @@ function Login({ setIsModalVisible, isModalVisible }) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
+  
   return (
     <div className="wrapper_login">
       <Modal
@@ -29,8 +29,8 @@ function Login({ setIsModalVisible, isModalVisible }) {
         footer={false}
       >
         { isSelectType
-          ? <LoginForm typeLogin={typeLogin} />
-          : <TypeAccount setTypeLogin={setTypeLogin} setIsSelectType={setIsSelectType} />}
+          ? <LoginForm typeUser={typeUser} />
+          : <TypeAccount setTypeUser={setTypeUser} setIsSelectType={setIsSelectType} />}
       </Modal>
     </div>
   );

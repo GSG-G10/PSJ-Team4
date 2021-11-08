@@ -1,6 +1,10 @@
 // Modules
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import {
+  createContext, useState, useEffect, useContext,
+} from 'react';
+import Cookies from 'js-cookie';
+import jwtDecode from 'jwt-decode';
 // Components
 import Footer from './components/common/Footer';
 import Nav from './components/common/Nav';
@@ -15,8 +19,20 @@ import './index.css';
 import Search from './pages/search/Search';
 
 function App() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const session = Cookies.get('session');
+    if (session) {
+      const getData = () => {
+        const sessionDecoded = jwtDecode(session);
+        return sessionDecoded;
+      };
+      setData(getData());
+    }
+  }, []);
   return (
-    <UserData.Provider>
+    <UserData.Provider value={data}>
       <Router>
         <Nav />
         <Switch>
