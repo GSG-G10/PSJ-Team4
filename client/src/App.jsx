@@ -13,6 +13,7 @@ import 'antd/dist/antd.css';
 import './App.less';
 import './index.css';
 import Search from './pages/search/Search';
+import Landing from './pages/Landing';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/search/:category" component={Search} />
           <Route exact path="/company/:companyId">
             <CompanyProfile />
