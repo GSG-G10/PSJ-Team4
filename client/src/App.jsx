@@ -1,6 +1,5 @@
 // Modules
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 // Components
 import Footer from './components/common/Footer';
 import Nav from './components/common/Nav';

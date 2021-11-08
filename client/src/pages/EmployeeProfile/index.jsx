@@ -24,15 +24,14 @@ const EmployeeProfile = () => {
     } else {
       setIsAuth(false);
     }
-    console.log(userData, 55);
   }, [userData]);
 
   useEffect(() => {
     const myAbortController = new AbortController();
-    async function fetchingEmployeeData(id) {
+    async function fetchingEmployeeData(userId) {
       try {
         if (!isAuth) {
-          const { data } = await axios.get(`/employee/${id}`, { signal: myAbortController.signal });
+          const { data } = await axios.get(`/employee/${userId}`, { signal: myAbortController.signal });
           setEmployeeData(data);
         } else {
           setEmployeeData(userData.data);
@@ -69,7 +68,7 @@ const EmployeeProfile = () => {
           </Tabs>
         </>
       ) : (
-        <Empty className='empty' />
+        <Empty className="empty" />
       )}
     </>
   );

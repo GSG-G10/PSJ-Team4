@@ -32,6 +32,9 @@ router.post(
 );
 router.post('/review/:companyId', checkAuth, handlePostReview);
 router.put('/employee', checkAuth, handleEditEmployee);
+router.put('/employee/:id', (req, res) => {
+  res.json({ message: 'data updated' });
+});
 router.post('/employee', handleAddEmployee, createSession);
 router.put('/review/:companyId', checkAuth, handleEditReview);
 

@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
-import {
-  Card,
-  Button,
-  Descriptions,
-} from 'antd';
+import { Card, Descriptions } from 'antd';
+import EditEmployeeInfo from './EditEmployeeInfo';
 
 const EmployeeInfo = ({ isAuth, data }) => (
-  <Card title="Information" className="profile-card" extra={isAuth ? <Button type="primary">Edit</Button> : null}>
+  <Card title="Information" className="profile-card" extra={isAuth ? <EditEmployeeInfo data={data} /> : null}>
     <Descriptions>
       <Descriptions.Item label="First Name">{data.first_name}</Descriptions.Item>
       <Descriptions.Item label="Last Name">{data.last_name}</Descriptions.Item>
