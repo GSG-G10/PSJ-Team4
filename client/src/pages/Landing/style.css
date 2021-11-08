@@ -1,0 +1,39 @@
+.sevices-cards .anticon{
+    font-size: 3.5rem;
+    color: rgb(47 102 176);
+    margin: 30px auto 0;
+}
+.sevices-cards .ant-card-body{
+    display: flex;
+    justify-content: center;
+}
+.sevices-cards .ant-card-body .ant-card-meta-title{
+    font-weight: 800;
+    text-align: center;
+    color: rgb(47 102 176);
+}
+.sevices-cards:hover{
+    background-color: #083879;
+}
+.sevices-cards:hover .ant-card-body .ant-card-meta-title{
+    color: white;
+}
+.sevices-cards:hover .anticon{
+    color: white;
+}
+.sevices .ant-typography{
+    color: white;
+}
+.sevices-cards{
+  width: 26%;
+}
+.partners .ant-typography{
+    color: rgb(47 102 176);
+}
+.partner-cards{
+    width: 23%;
+    padding: 2rem;
+}
+.partner-cards .ant-card-body{
+    padding: 0;
+}
