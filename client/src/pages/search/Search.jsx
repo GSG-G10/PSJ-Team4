@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { Pagination } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import CompanyCard from '../../components/common/cards/CompanyCard';
 import JobCard from '../../components/common/cards/JobCard';
 import Filter from './Filter';
 import './searchstyle.css';
 
 function Search({ match }) {
+  const [rows, setRows] = useState([]);
   const [data, setData] = useState({
     query: '',
     type: '',
@@ -25,7 +27,25 @@ function Search({ match }) {
     setData(statusCopy);
   };
 
-  const handleSearch = (e) => e.preventDefault();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    axios.post('/api/v1/search', data).then(
+      (res) => {
+        setRows(res.data);
+      },
+    );
+  };
+
+  useEffect(() => {
+    const defualtSearch = {
+      type: 'company',
+    };
+    axios.post('/search', defualtSearch).then(
+      (res) => {
+        setRows(res.data);
+      },
+    );
+  }, []);
 
   return (
     <div className="wrapper_search">
@@ -34,24 +54,21 @@ function Search({ match }) {
         handleSearch={handleSearch}
         handleInfos={handleInfos}
       />
-      <div className="wrapper_cads_companyes">
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <CompanyCard />
-        <CompanyCard />
-        <CompanyCard />
-        <CompanyCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <CompanyCard />
-        <CompanyCard />
-        <CompanyCard />
-        <CompanyCard />
-      </div>
+
+      {
+          setRows.length > 0
+            ? (
+              <div className="wrapper_cads_companyes">
+                {
+                  data.type === 'jobs'
+                    ? rows.map((card) => <JobCard data={card} />)
+                    : rows.map((card) => <CompanyCard data={card} />)
+                  }
+              </div>
+            )
+            : null
+          }
+
       <div className="bowl_pagination">
         <Pagination defaultCurrent={1} total={50} />
       </div>
