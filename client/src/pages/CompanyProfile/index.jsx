@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -9,9 +10,10 @@ import {
   Button,
   Empty,
 } from 'antd';
+import { UserData } from '../../context/UserDataContext';
 import CompanyInfo from '../../components/CompanyInfo';
 import Img from '../../components/common/Img';
-import { UserData } from '../../context/UserDataContext';
+import CompanyReviews from '../../components/CompanyReview';
 import './style.css';
 
 const { Title } = Typography;
@@ -21,8 +23,9 @@ const CompanyProfile = () => {
   const [mapUrl, setMapUrl] = useState('');
   const [companyData, setCompanyData] = useState({});
   const [isAuth, setIsAuth] = useState(false);
-
   const userData = useContext(UserData);
+  const [reviews, setReviews] = useState({});
+
   const { companyId } = useParams();
 
   useEffect(() => {
@@ -37,9 +40,12 @@ const CompanyProfile = () => {
     const myAbortController = new AbortController();
     async function fetchingLocation(location) {
       try {
-        const { data: locationData } = await axios.get(`https://nominatim.openstreetmap.org/search.php?q=${location}&format=jsonv2`, { signal: myAbortController.signal });
-        const { lat } = locationData[0];
-        const { lon } = locationData[0];
+        const { data: locationData } = await axios.get(
+          `https://nominatim.openstreetmap.org/search.php?q=${location}&format=jsonv2`,
+          { signal: myAbortController.signal },
+        );
+        const { lat, lon } = locationData[0];
+
         const map = `https://maps.google.com/maps?q=${lat},${lon}&hl=es&z=14&amp&output=embed`;
         setMapUrl(map);
       } catch (err) {
@@ -74,6 +80,22 @@ const CompanyProfile = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const myAbortController = new AbortController();
+    async function fetchingCompanyReviews(id) {
+      try {
+        const getReviews = await axios.get(`/review/${id}`, { signal: myAbortController.signal });
+        setReviews(getReviews.data);
+      } catch (err) {
+        message.error(err.response.data.Error);
+      }
+    }
+    fetchingCompanyReviews(companyId);
+    return () => {
+      myAbortController.abort();
+    };
+  }, []);
+
   return (
     <>
       {companyData?.data ? (
@@ -102,7 +124,9 @@ const CompanyProfile = () => {
               <CompanyInfo isAuth={isAuth} data={companyData.data} />
             </TabPane>
             <TabPane tab="Jobs" key="2" />
-            <TabPane tab="Review" key="3" />
+            <TabPane tab="Review" key="3">
+              <CompanyReviews reviews={reviews} />
+            </TabPane>
           </Tabs>
         </>
       ) : <Empty className="empty" />}
