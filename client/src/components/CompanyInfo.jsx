@@ -11,7 +11,7 @@ const CompanyInfo = ({ isAuth, data }) => (
       <Descriptions.Item label="Name">{data.name}</Descriptions.Item>
       <Descriptions.Item label="Email">{data.email}</Descriptions.Item>
       <Descriptions.Item label="Address">{data.location}</Descriptions.Item>
-      <Descriptions.Item label="Work Time">{data.timeWork}</Descriptions.Item>
+      <Descriptions.Item label="Work Time">{`${data.start_work_time} - ${data.end_work_time}`}</Descriptions.Item>
     </Descriptions>
   </Card>
 );
