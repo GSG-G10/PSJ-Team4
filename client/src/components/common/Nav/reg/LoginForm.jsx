@@ -11,7 +11,7 @@ const { Title } = Typography;
 const typeAccount = ({ typeUser }) => {
   const checkLogin = async (values) => {
     try {
-      await axios.post(`/auth/${typeUser}`, values);
+      await axios.post(`/api/v1/auth/${typeUser}`, values);
     } catch (err) {
       message.error(err.response.data.message);
     }

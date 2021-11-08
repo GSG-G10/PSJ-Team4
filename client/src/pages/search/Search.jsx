@@ -25,10 +25,7 @@ function Search({ match }) {
     setData(statusCopy);
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log();
-  };
+  const handleSearch = (e) => e.preventDefault();
 
   return (
     <div className="wrapper_search">

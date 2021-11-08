@@ -23,7 +23,7 @@ const EditEmployeeModal = ({ data }) => {
       setConfirmLoading(false);
       const sendRequest = async (newInformation) => {
         try {
-          const response = await axios.put(`/employee/${data.id}`, newInformation);
+          const response = await axios.put(`/api/v1/employee/${data.id}`, newInformation);
           messageSuccess(response.data.message);
         } catch (error) {
           messageError(error.message);

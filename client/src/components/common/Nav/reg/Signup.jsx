@@ -19,7 +19,6 @@ function Login({ setIsModalSignup, isModalSignup }) {
 
   return (
     <div className="wrapper_login">
-      {console.log(typeUser)}
       <Modal
         className="pop_login "
         visible={isModalSignup}
