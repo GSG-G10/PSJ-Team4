@@ -8,10 +8,11 @@ import { Logo } from '../../../../assets';
 
 const { Title } = Typography;
 
-const typeAccount = ({ typeLogin }) => {
+const typeAccount = ({ typeUser }) => {
   const checkLogin = async (values) => {
     try {
-      await axios.post(`/auth/${typeLogin}`, values);
+      console.log('typeUser, ', typeUser);
+      await axios.post(`/auth/${typeUser}`, values);
     } catch (err) {
       message.error(err.response.data.message);
     }
@@ -64,7 +65,7 @@ const typeAccount = ({ typeLogin }) => {
 };
 
 typeAccount.propTypes = {
-  typeLogin: PropTypes.string.isRequired,
+  typeUser: PropTypes.string.isRequired,
 };
 
 export default typeAccount;

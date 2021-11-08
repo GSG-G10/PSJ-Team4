@@ -8,6 +8,7 @@ const {
 const { checkEmployeeAccount } = require('../controllers/Auth/employee');
 const { checkCompanyAccount } = require('../controllers/Auth/company');
 const { getEmployee } = require('../controllers/getEmployee');
+const { search } = require('../controllers/search');
 
 const { handleAddEmployee } = require('../controllers');
 const { checkAuth, createSession, loginValidation } = require('../middlewares');
@@ -27,8 +28,10 @@ router.post(
   checkCompanyAccount,
   createSession,
 );
+
 router.post('/review/:companyId', checkAuth, handlePostReview);
 router.put('/employee', checkAuth, handleEditEmployee);
 router.post('/employee', handleAddEmployee, createSession);
+router.post('/search/', search);
 
 module.exports = router;
