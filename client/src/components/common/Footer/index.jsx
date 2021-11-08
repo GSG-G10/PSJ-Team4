@@ -18,8 +18,8 @@ const {
 
 function Footer() {
   return (
-    <footer className="footer">
-      <Row className="px-20 py-5 bg-primary">
+    <footer className="footer h-44 px-20 py-5 bg-primary">
+      <Row>
         <Col span={5}>
           <Title className="footer-title" level={5}>PSJobs</Title>
           <Paragraph className="footer-content">
