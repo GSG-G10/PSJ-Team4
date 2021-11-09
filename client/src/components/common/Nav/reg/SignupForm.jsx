@@ -14,12 +14,13 @@ function TypeAccount({ typeUser }) {
     message.warning('This is a warning');
   };
 
-  const checkLogin = (values) => {
-    console.log(typeUser);
-    axios.post('/signup', { value: values, typeUser })
-      .then((res) => {
-        console.log(res);
-      });
+  const checkLogin = async (values) => {
+    try {
+      const response = await axios.post('/api/v1/signup', { value: values, typeUser });
+      message.success(response.data);
+    } catch (error) {
+      message.warning(error.message);
+    }
   };
 
   const lineNameInputs = (label, name1, name2, place1, place2) => (

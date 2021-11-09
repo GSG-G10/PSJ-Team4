@@ -15,9 +15,9 @@ const UserDataProvider = ({ children }) => {
   const fetchData = async () => {
     let res;
     if (sessionDecoded.role === 'employee') {
-      res = await axios.get(`/employee/${sessionDecoded.id}`);
+      res = await axios.get(`/api/v1/employee/${sessionDecoded.id}`);
     } else {
-      res = await axios.get(`/company/${sessionDecoded.id}`);
+      res = await axios.get(`/api/v1/company/${sessionDecoded.id}`);
     }
     setUserInfo({
       role: sessionDecoded.role,
@@ -31,9 +31,6 @@ const UserDataProvider = ({ children }) => {
     } else {
       fetchData();
     }
-    return () => {
-      console.log('hi');
-    };
   }, []);
 
   return (

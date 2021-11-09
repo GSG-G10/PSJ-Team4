@@ -18,9 +18,11 @@ const EmployeeProfile = () => {
   const { employeeId } = useParams();
   const userData = useContext(UserData);
 
+  const stringToNumber = (string) => parseFloat(string);
+
   useEffect(() => {
     if (userData?.data) {
-      setIsAuth(employeeId == userData.data.id && userData.role === 'employee');
+      setIsAuth(stringToNumber(employeeId) === userData.data.id && userData.role === 'employee');
     } else {
       setIsAuth(false);
     }
@@ -31,7 +33,7 @@ const EmployeeProfile = () => {
     async function fetchingEmployeeData(userId) {
       try {
         if (!isAuth) {
-          const { data } = await axios.get(`/employee/${userId}`, { signal: myAbortController.signal });
+          const { data } = await axios.get(`/api/v1/employee/${userId}`, { signal: myAbortController.signal });
           setEmployeeData(data);
         } else {
           setEmployeeData(userData.data);

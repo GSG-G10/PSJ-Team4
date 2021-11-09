@@ -27,10 +27,11 @@ const CompanyProfile = () => {
   const [reviews, setReviews] = useState({});
 
   const { companyId } = useParams();
+  const stringToNumber = (string) => parseFloat(string);
 
   useEffect(() => {
     if (userData.data) {
-      setIsAuth(companyId == userData.data.id && userData.role === 'company');
+      setIsAuth(stringToNumber(companyId) === userData.data.id && userData.role === 'company');
     } else {
       setIsAuth(false);
     }
@@ -65,7 +66,7 @@ const CompanyProfile = () => {
     async function fetchingCompanyData(id) {
       try {
         if (!isAuth) {
-          const { data } = await axios.get(`/company/${id}`, { signal: myAbortController.signal });
+          const { data } = await axios.get(`/api/v1/company/${id}`, { signal: myAbortController.signal });
           setCompanyData(data);
         } else {
           setCompanyData(userData.data);
@@ -84,7 +85,7 @@ const CompanyProfile = () => {
     const myAbortController = new AbortController();
     async function fetchingCompanyReviews(id) {
       try {
-        const getReviews = await axios.get(`/review/${id}`, { signal: myAbortController.signal });
+        const getReviews = await axios.get(`/api/v1/review/${id}`, { signal: myAbortController.signal });
         setReviews(getReviews.data);
       } catch (err) {
         message.error(err.response.data.Error);

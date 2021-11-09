@@ -29,11 +29,9 @@ function Search({ match }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    axios.post('/search', data).then(
+    axios.post('/api/v1/search', data).then(
       (res) => {
-        console.log(res.data);
         setRows(res.data);
-        console.log(rows);
       },
     );
   };

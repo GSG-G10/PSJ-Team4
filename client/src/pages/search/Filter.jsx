@@ -5,7 +5,6 @@ import { useState } from 'react';
 function Filter({ handleSearch, handleInfos, typeFind }) {
   const [typeSearch, setTypeSearch] = useState(typeFind);
   const handleInfosType = (e) => {
-    console.log(e.target.value);
     setTypeSearch(e.target.value);
   };
   return (
