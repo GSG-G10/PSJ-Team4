@@ -4,6 +4,7 @@
         "es2021": true,
         "node": true
     },
+    "root": true,
     "extends": [
         "plugin:react/recommended",
         "airbnb",
@@ -20,7 +21,15 @@
         "react"
     ],
     "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+        "linebreak-style": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ]
     }
 }
