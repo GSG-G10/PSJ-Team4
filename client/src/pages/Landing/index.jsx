@@ -8,6 +8,7 @@ import './style.css';
 
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import mercy from '../../assets/mercy.jpg';
 import paltel from '../../assets/paltel.jpg';
 import bank from '../../assets/bank.jpg';
@@ -30,6 +31,7 @@ const Landing = () => {
   const [role, setrole] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalSignup, setIsModalSignup] = useState(false);
+  const [rows, setRows] = useState([]);
 
   const userData = useContext(UserData);
 
@@ -44,6 +46,14 @@ const Landing = () => {
     setrole(userData.role);
   }, [userData]);
 
+  useEffect(() => {
+    axios.post('/api/v1/search', { type: 'company' }).then(
+      (res) => {
+        console.log(res.data);
+        setRows(res.data);
+      },
+    );
+  }, []);
   const settings = {
     dots: false,
     infinite: true,
@@ -243,7 +253,6 @@ const Landing = () => {
           />
         </div>
       </div>
-
       <div className="seaction_cards">
         <div className="title_seaction">
           <span className="explore">Explore Campanies</span>
@@ -251,44 +260,30 @@ const Landing = () => {
         </div>
 
         <div className="cards_landing_sec">
-
           <CompanyCard data={{
-            id: 8,
-            name: 'Oyoyo',
-            email: 'ckenrat7@linkedin.com',
-            password: '7SKj1NtPMpM',
+            id: 10,
+            name: 'Gevee',
+            email: 'gvasyukhnov9@jalbum.net',
+            password: 'Abi1zw',
             location: 'gaza',
-            profile_img: 'https://robohash.org/officiisvelitenim.png?size=50x50&set=set1',
-            start_work_time: '5:05 AM',
-            end_work_time: '1:03 AM',
-            location_lat: '-7.2457322',
-            location_lon: '112.7795375',
+            profile_img: 'https://robohash.org/dolorconsecteturlabore.png?size=50x50&set=set1',
+            start_work_time: '3:33 PM',
+            end_work_time: '3:12 PM',
+            location_lat: '49.7479799',
+            location_lon: '23.9240561',
           }}
           />
           <CompanyCard data={{
-            id: 7,
-            name: 'Yamia',
-            email: 'cletch6@wiley.com',
-            password: '545QZTDYcv',
+            id: 2,
+            name: 'Jaloo',
+            email: 'kwindeatt1@smh.com.au',
+            password: 'o4Ypm20EnyO',
             location: 'gaza',
-            profile_img: 'https://robohash.org/etautalias.png?size=50x50&set=set1',
-            start_work_time: '3:58 AM',
-            end_work_time: '5:36 AM',
-            location_lat: '11.0124684',
-            location_lon: '-63.9379244',
-          }}
-          />
-          <CompanyCard data={{
-            id: 5,
-            name: 'Zoovu',
-            email: 'deveritt4@pbs.org',
-            password: 'oOGAEQr',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/eospraesentiumdeserunt.png?size=50x50&set=set1',
-            start_work_time: '2:40 PM',
-            end_work_time: '2:21 AM',
-            location_lat: '50.8137495',
-            location_lon: '-119.6934422',
+            profile_img: 'https://robohash.org/numquamenimqui.png?size=50x50&set=set1',
+            start_work_time: '6:15 PM',
+            end_work_time: '3:35 AM',
+            location_lat: '34.746611',
+            location_lon: '113.625328',
           }}
           />
           <CompanyCard data={{
@@ -312,123 +307,7 @@ const Landing = () => {
           <span>What employees say about the compmanies</span>
         </div>
         <Slider {...settings} className="sliderhome">
-          <CompanyCard data={{
-            id: 7,
-            name: 'Yamia',
-            email: 'cletch6@wiley.com',
-            password: '545QZTDYcv',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/etautalias.png?size=50x50&set=set1',
-            start_work_time: '3:58 AM',
-            end_work_time: '5:36 AM',
-            location_lat: '11.0124684',
-            location_lon: '-63.9379244',
-          }}
-          />
-          <CompanyCard data={{
-            id: 5,
-            name: 'Zoovu',
-            email: 'deveritt4@pbs.org',
-            password: 'oOGAEQr',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/eospraesentiumdeserunt.png?size=50x50&set=set1',
-            start_work_time: '2:40 PM',
-            end_work_time: '2:21 AM',
-            location_lat: '50.8137495',
-            location_lon: '-119.6934422',
-          }}
-          />
-          <CompanyCard data={{
-            id: 8,
-            name: 'Oyoyo',
-            email: 'ckenrat7@linkedin.com',
-            password: '7SKj1NtPMpM',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/officiisvelitenim.png?size=50x50&set=set1',
-            start_work_time: '5:05 AM',
-            end_work_time: '1:03 AM',
-            location_lat: '-7.2457322',
-            location_lon: '112.7795375',
-          }}
-          />
-          <CompanyCard data={{
-            id: 7,
-            name: 'Yamia',
-            email: 'cletch6@wiley.com',
-            password: '545QZTDYcv',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/etautalias.png?size=50x50&set=set1',
-            start_work_time: '3:58 AM',
-            end_work_time: '5:36 AM',
-            location_lat: '11.0124684',
-            location_lon: '-63.9379244',
-          }}
-          />
-          <CompanyCard data={{
-            id: 5,
-            name: 'Zoovu',
-            email: 'deveritt4@pbs.org',
-            password: 'oOGAEQr',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/eospraesentiumdeserunt.png?size=50x50&set=set1',
-            start_work_time: '2:40 PM',
-            end_work_time: '2:21 AM',
-            location_lat: '50.8137495',
-            location_lon: '-119.6934422',
-          }}
-          />
-          <CompanyCard data={{
-            id: 8,
-            name: 'Oyoyo',
-            email: 'ckenrat7@linkedin.com',
-            password: '7SKj1NtPMpM',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/officiisvelitenim.png?size=50x50&set=set1',
-            start_work_time: '5:05 AM',
-            end_work_time: '1:03 AM',
-            location_lat: '-7.2457322',
-            location_lon: '112.7795375',
-          }}
-          />
-          <CompanyCard data={{
-            id: 7,
-            name: 'Yamia',
-            email: 'cletch6@wiley.com',
-            password: '545QZTDYcv',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/etautalias.png?size=50x50&set=set1',
-            start_work_time: '3:58 AM',
-            end_work_time: '5:36 AM',
-            location_lat: '11.0124684',
-            location_lon: '-63.9379244',
-          }}
-          />
-          <CompanyCard data={{
-            id: 5,
-            name: 'Zoovu',
-            email: 'deveritt4@pbs.org',
-            password: 'oOGAEQr',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/eospraesentiumdeserunt.png?size=50x50&set=set1',
-            start_work_time: '2:40 PM',
-            end_work_time: '2:21 AM',
-            location_lat: '50.8137495',
-            location_lon: '-119.6934422',
-          }}
-          />
-          <CompanyCard data={{
-            id: 8,
-            name: 'Oyoyo',
-            email: 'ckenrat7@linkedin.com',
-            password: '7SKj1NtPMpM',
-            location: 'gaza',
-            profile_img: 'https://robohash.org/officiisvelitenim.png?size=50x50&set=set1',
-            start_work_time: '5:05 AM',
-            end_work_time: '1:03 AM',
-            location_lat: '-7.2457322',
-            location_lon: '112.7795375',
-          }}
-          />
+          { rows ? rows.map((datas) => <CompanyCard data={datas} />) : null }
         </Slider>
       </div>
     </>
