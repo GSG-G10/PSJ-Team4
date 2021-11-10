@@ -4,11 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
-<<<<<<< HEAD
 import { Link, useHistory, useLocation } from 'react-router-dom';
-=======
-import { Link, useHistory } from 'react-router-dom';
->>>>>>> 55c1971d73d72c7fbcd1588f67d01b76c25c0575
 import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
 import { UserData } from '../../../context/UserDataContext';
