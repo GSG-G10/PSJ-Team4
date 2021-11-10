@@ -18,7 +18,7 @@ function Login({ setIsModalVisible, isModalVisible }) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  
+
   return (
     <div className="wrapper_login">
       <Modal

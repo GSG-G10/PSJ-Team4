@@ -4,8 +4,9 @@ import { useState, useContext, useEffect } from 'react';
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import Cookies from 'js-cookie';
 import { UserData } from '../../../context/UserDataContext';
 import { Logo, ImgLoad } from '../../../assets';
 import Login from './reg/Login';
@@ -13,17 +14,15 @@ import Signup from './reg/Signup';
 
 const { Search } = Input;
 
-const handleSignOut = () => {
-  // sign out
-};
-
 const Nav = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalSignup, setIsModalSignup] = useState(false);
   const [role, setrole] = useState('');
 
   const userData = useContext(UserData);
+
   const history = useHistory();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setrole(userData.role);
@@ -39,6 +38,11 @@ const Nav = () => {
 
   const showModalSignup = () => {
     setIsModalSignup(true);
+  };
+
+  const handleSignOut = () => {
+    Cookies.remove('session');
+    return pathname === '/' ? window.location.reload() : history.push('/');
   };
 
   return (
