@@ -37,10 +37,9 @@ function Search({ match }) {
   };
 
   useEffect(() => {
-    const defualtSearch = {
-      type: 'company',
-    };
-    axios.post('/search', defualtSearch).then(
+    axios.post('/api/v1/search', {
+      type: match.params.category,
+    }).then(
       (res) => {
         setRows(res.data);
       },
@@ -77,6 +76,6 @@ function Search({ match }) {
 }
 
 Search.propTypes = {
-  match: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
 };
 export default Search;

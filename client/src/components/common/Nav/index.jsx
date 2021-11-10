@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { UserData } from '../../../context/UserDataContext';
 import { Logo, ImgLoad } from '../../../assets';
@@ -23,13 +23,14 @@ const Nav = () => {
   const [role, setrole] = useState('');
 
   const userData = useContext(UserData);
+  const history = useHistory();
 
   useEffect(() => {
     setrole(userData.role);
   }, [userData]);
 
   const onSearch = (value) => {
-    // Handle search here
+    history.push('/search/company');
   };
 
   const showModalLogin = () => {
