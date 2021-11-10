@@ -4,6 +4,7 @@ const addCompany = require('./addCompany');
 const editCompanyQuery = require('./editCompany');
 const checkCompanyIdQuery = require('./checkCompanyIdQuery');
 const getCompanyReviewQuery = require('./getCompanyReviewQuery');
+const getJobsQuery = require('./getCompanyJobsQuery');
 
 module.exports = {
   checkCompanyEmail,
@@ -12,4 +13,5 @@ module.exports = {
   editCompanyQuery,
   getCompanyReviewQuery,
   checkCompanyIdQuery,
+  getJobsQuery,
 };
