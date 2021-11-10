@@ -1,17 +1,32 @@
 import {
   Button, Image, Typography, Form, Input, message,
 } from 'antd';
-import '../style.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Logo } from '../../../../assets';
 
+import '../style.css';
+
 const { Title } = Typography;
 
 const typeAccount = ({ typeUser }) => {
+  const openMessage = (text) => {
+    message.loading('Loading...');
+    setTimeout(() => {
+      message.success(text);
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }, 1000);
+  };
   const checkLogin = async (values) => {
     try {
-      await axios.post(`/api/v1/auth/${typeUser}`, values);
+      const responseLogin = await axios.post(
+        `/api/v1/auth/${typeUser}`,
+        values,
+      );
+      const authenticationMessage = await responseLogin.data.Authentication;
+      openMessage(authenticationMessage);
     } catch (err) {
       message.error(err.response.data.message);
     }
