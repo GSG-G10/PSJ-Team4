@@ -7,7 +7,7 @@ import TimeSvg from '../../../assets/TimeSvg';
 
 function CompanyCard({ data }) {
   return (
-    <Link to="pathcopany" className="card_company">
+    <Link to={`/company/${data.id}`} className="card_company">
       <div className="logo_company">
         <Image preview={false} width={70} src={data.profile_img} />
       </div>
