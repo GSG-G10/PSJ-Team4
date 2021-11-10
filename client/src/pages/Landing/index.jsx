@@ -1,28 +1,31 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useContext, useEffect, useState } from 'react';
+
 import {
   Typography, Card, Button, Image,
 } from 'antd';
 import { AimOutlined, BankOutlined, SearchOutlined } from '@ant-design/icons';
-import './style.css';
-
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import mercy from '../../assets/mercy.jpg';
-import paltel from '../../assets/paltel.jpg';
-import bank from '../../assets/bank.jpg';
-import gsg from '../../assets/gsg.jpg';
+
 import { UserData } from '../../context/UserDataContext';
-import landingCompany from '../../assets/landingCompany.png';
-import landingEmployee from '../../assets/landingEmployee.png';
-import landingUser from '../../assets/landingUser.png';
 import Login from '../../components/common/Nav/reg/Login';
 import Signup from '../../components/common/Nav/reg/Signup';
 import JobCard from '../../components/common/cards/JobCard';
 import CompanyCard from '../../components/common/cards/CompanyCard';
+
+import mercy from '../../assets/mercy.jpg';
+import paltel from '../../assets/paltel.jpg';
+import bank from '../../assets/bank.jpg';
+import gsg from '../../assets/gsg.jpg';
+import landingCompany from '../../assets/landingCompany.png';
+import landingEmployee from '../../assets/landingEmployee.png';
+import landingUser from '../../assets/landingUser.png';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './style.css';
 
 const { Meta } = Card;
 const { Title, Text } = Typography;
@@ -47,12 +50,8 @@ const Landing = () => {
   }, [userData]);
 
   useEffect(() => {
-    axios.post('/api/v1/search', { type: 'company' }).then(
-      (res) => {
-        console.log(res.data);
-        setRows(res.data);
-      },
-    );
+    axios.post('/api/v1/search', { type: 'company' })
+      .then((res) => setRows(res.data));
   }, []);
   const settings = {
     dots: false,
