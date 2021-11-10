@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { useState, useContext, useEffect } from 'react';
-
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
+
+import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { UserData } from '../../../context/UserDataContext';
-import { Logo, ImgLoad } from '../../../assets';
+
 import Login from './reg/Login';
 import Signup from './reg/Signup';
+
+import { Logo, ImgLoad } from '../../../assets';
 
 const { Search } = Input;
 
@@ -65,16 +67,23 @@ const Nav = () => {
         {role === 'company' || role === 'employee' ? (
           <div className="flex items-center">
             {userData.role === 'company' ? (
-              <Button className="mr-7 text-sm" type="primary">POST A JOB</Button>
+              <Button className="mr-7 text-sm" type="primary">
+                POST A JOB
+              </Button>
             ) : (
-              <Button className="mr-7 text-sm" type="primary">EXPLORE</Button>
+              <Button className="mr-7 text-sm" type="primary">
+                EXPLORE
+              </Button>
             )}
             <Dropdown
               className="cursor-pointer"
               overlay={(
                 <Menu>
                   <Menu.Item>
-                    <Link className="flex items-center" to={`${userData?.role}/${userData?.data?.id}`}>
+                    <Link
+                      className="flex items-center"
+                      to={`${userData?.role}/${userData?.data?.id}`}
+                    >
                       <UserOutlined className="mr-3" />
                       Profile
                     </Link>
@@ -95,30 +104,32 @@ const Nav = () => {
               arrow
             >
               <Badge count={5} size="small">
-                <Avatar src={userData.profile_img} shape="circle" size="mid" />
+                <Avatar
+                  src={userData.data.profile_img}
+                  shape="circle"
+                  size="mid"
+                />
               </Badge>
             </Dropdown>
           </div>
         ) : (
           <div>
             <Button onClick={showModalLogin}> Login</Button>
-            {
-              isModalVisible && (
-                <Login
-                  setIsModalVisible={setIsModalVisible}
-                  isModalVisible={isModalVisible}
-                />
-              )
-            }
-            <Button onClick={showModalSignup} type="primary" className="ml-3">Create Account</Button>
-            {
-            isModalSignup && (
+            {isModalVisible && (
+              <Login
+                setIsModalVisible={setIsModalVisible}
+                isModalVisible={isModalVisible}
+              />
+            )}
+            <Button onClick={showModalSignup} type="primary" className="ml-3">
+              Create Account
+            </Button>
+            {isModalSignup && (
               <Signup
                 setIsModalSignup={setIsModalSignup}
                 isModalSignup={isModalSignup}
               />
-            )
-          }
+            )}
           </div>
         )}
       </nav>

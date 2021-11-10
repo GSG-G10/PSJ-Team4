@@ -76,6 +76,6 @@ function Search({ match }) {
 }
 
 Search.propTypes = {
-  match: PropTypes.object.isRequired,
+  match: PropTypes.isRequired,
 };
 export default Search;
