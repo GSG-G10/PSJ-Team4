@@ -1,3 +1,8 @@
+
+.sevices-cards {
+    width: 250px !important;
+
+}
 .sevices-cards .anticon{
     font-size: 3.5rem;
     color: rgb(47 102 176);
@@ -62,4 +67,67 @@
     color: grey !important;
     line-height: 5vh !important;
     font-size: 1.3rem !important;
+}
+
+
+
+.seaction_cards{
+    width: 80%;
+    margin: 0 auto;
+    
+}
+
+.title_seaction{
+    padding:0 40px ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_seaction .explore{
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.title_seaction .seeall{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+
+.cards_landing_sec{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.bowl_slider{
+margin: 40px 0;
+background-color: #2F66B0;
+}
+
+.sliderhome{
+width: 80%;
+margin: 0 auto;
+}
+
+.sliderhome .card_company{
+    width: 80% !important;
+}
+
+.title_sec_Slid {
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.title_sec_Slid h2{
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+}
+
+
+.linkled_none{
+    text-decoration: none;
+    width: 100%;
 }

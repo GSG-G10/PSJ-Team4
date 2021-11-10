@@ -9,7 +9,7 @@ import { timeSince } from '../../time-since';
 
 function JobCard({ data }) {
   return (
-    <Link to="pathcopany" className="card_job">
+    <Link to={`/company/${data.id}`} className="card_job">
       <div className="title_job">
         <span>{data.title}</span>
       </div>

@@ -3,6 +3,11 @@ width: 450px !important;
 height: 520px !important;
 }
 
+
+.pop_login .ant-form{
+    margin: 0 auto !important;
+}
+
 .icon_jsjobs {
 width: 100% !important;
 text-align: center;
