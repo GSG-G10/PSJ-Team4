@@ -25,4 +25,4 @@
 
 ---
 ### Database Schema 
-![Uploading file..._3c2vil0pc]()
+![](https://i.imgur.com/Tt5hjQo.png)
