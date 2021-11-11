@@ -7,6 +7,7 @@ const {
   handleAddEmployee,
   handleEditReview,
   getCompanyReview,
+  getCompanyJobs,
 
 } = require('../controllers');
 const { checkEmployeeAccount } = require('../controllers/Auth/employee');
@@ -19,6 +20,7 @@ const { checkAuth, createSession, loginValidation } = require('../middlewares');
 router.get('/company/:companyId', getCompanyInfo);
 router.get('/employee/:employeeId', getEmployee);
 router.get('/review/:companyId', getCompanyReview);
+router.get('/company/jobs/:id', getCompanyJobs);
 
 router.post(
   '/auth/employee',
@@ -32,14 +34,14 @@ router.post(
   checkCompanyAccount,
   createSession,
 );
-
 router.post('/review/:companyId', checkAuth, handlePostReview);
+router.post('/employee', handleAddEmployee, createSession);
+router.post('/search/', search);
+
 router.put('/employee', checkAuth, handleEditEmployee);
 router.put('/employee/:id', (req, res) => {
   res.json({ message: 'data updated' });
 });
-router.post('/employee', handleAddEmployee, createSession);
-router.post('/search/', search);
 router.put('/review/:companyId', checkAuth, handleEditReview);
 
 module.exports = router;

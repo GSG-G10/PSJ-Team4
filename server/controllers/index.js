@@ -5,6 +5,7 @@ const handleEditCompany = require('./handleEditCompany');
 const handleEditEmployee = require('./handleEditEmployee');
 const handleEditReview = require('./handleEditReview');
 const getCompanyReview = require('./getCompanyReview');
+const getCompanyJobs = require('./getCompanyJobs');
 
 module.exports = {
   handlePostReview,
@@ -14,4 +15,5 @@ module.exports = {
   handleEditEmployee,
   handleEditReview,
   getCompanyReview,
+  getCompanyJobs,
 };
