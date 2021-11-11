@@ -13,7 +13,7 @@ import {
 import { UserData } from '../../context/UserDataContext';
 import CompanyInfo from '../../components/CompanyInfo';
 import Img from '../../components/common/Img';
-import CompanyReviews from '../../components/CompanyReview';
+import { CompanyReviews, CompanyJobs } from '../../components';
 import './style.css';
 
 const { Title } = Typography;
@@ -25,6 +25,7 @@ const CompanyProfile = () => {
   const [isAuth, setIsAuth] = useState(false);
   const userData = useContext(UserData);
   const [reviews, setReviews] = useState({});
+  const [jobs, setJobs] = useState({});
 
   const { companyId } = useParams();
   const stringToNumber = (string) => parseFloat(string);
@@ -68,6 +69,8 @@ const CompanyProfile = () => {
         if (!isAuth) {
           const { data } = await axios.get(`/api/v1/company/${id}`, { signal: myAbortController.signal });
           setCompanyData(data);
+          const companyJobs = await axios.get(`/api/v1/company/jobs/${id}`, { signal: myAbortController.signal });
+          setJobs(companyJobs.data);
         } else {
           setCompanyData(userData.data);
         }
@@ -124,7 +127,9 @@ const CompanyProfile = () => {
             <TabPane tab="Information" key="1">
               <CompanyInfo isAuth={isAuth} data={companyData.data} />
             </TabPane>
-            <TabPane tab="Jobs" key="2" />
+            <TabPane tab="Jobs" key="2">
+              <CompanyJobs jobs={jobs} />
+            </TabPane>
             <TabPane tab="Review" key="3">
               <CompanyReviews reviews={reviews} />
             </TabPane>

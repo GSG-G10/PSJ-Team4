@@ -3,7 +3,9 @@ import { useState, useContext, useEffect } from 'react';
 import {
   Input, Button, Badge, Avatar, Menu, Dropdown, Image,
 } from 'antd';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import {
+  Link, useHistory, useLocation, Redirect,
+} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 import { BookOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
@@ -56,6 +58,8 @@ const Nav = () => {
           src={Logo}
           preview={false}
           fallback={ImgLoad}
+          onClick={() => history.push('/')}
+          style={{ cursor: 'pointer' }}
         />
         <Search
           placeholder="Search"

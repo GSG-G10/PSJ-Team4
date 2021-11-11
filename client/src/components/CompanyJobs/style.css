@@ -1,0 +1,15 @@
+.job-card {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+.job-card-main-data {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
